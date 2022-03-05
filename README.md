@@ -10,24 +10,43 @@ ps：机翻有待加强，需要润色。也希望更多的小众漫画能够得
 
 普通用户这里下载
 ## 使用方法
+1.提前排好图片顺序与名称
+2.打开软件（需要30秒）
+3.导入漫画，字体
+4.设置要翻译的语言
+5.手动选择区域，点击需要的功能，右下角确定
 
+想要尝试全自动翻译可以把整张图选中,然后点击自动翻译
+部分标点符号大小可能会渲染异常,更换排列方式有概率解决
+
+环境要求:
+需要网络,使用Google翻译(中国)
+有显卡可显著加快图像处理速度(CUDA)
+需要驱动版本>=472.50
+整合包自带CUDA10.2与cudnn不需要额外安装
+
+字体下载地址:
+[www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
 ## 效果
-|[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)   |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)   |
-| ------------ | ------------ |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
 ##### 界面展示
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")
 ##### 口语翻译有待加强
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")
+##### 其他功能
+|[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)   |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)   |
+| ------------ | ------------ |
+| [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/7.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/7.jpg)  |  [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/7.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/7.jpg) |
+| [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/14.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/14.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/11.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/11.jpg)   |
+| [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/12.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/12.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/12.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/12.jpg)   |
+| [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/13.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/13.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/13.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/13.jpg)   |
 ## 目标
 更多字体渲染方式（CG文字渲染）
 更多字体角度
 优化使用体验
 ## 相关项目
-
+[kha-white/manga-ocr](https://github.com/kha-white/manga-ocr "kha-white/manga-ocr")(垂直日文识别模型)
+[zyddnys](https://github.com/zyddnys/manga-image-translator)与[dmMaze](https://github.com/dmMaze/comic-text-detector)(文本检测模型)
+[KUR-creative/SickZil-Machine](https://github.com/KUR-creative/SickZil-Machine "KUR-creative/SickZil-Machine")(图像修复模型)
 ## 开源协议
 BSD 3-Clause License
 感谢一切推广
