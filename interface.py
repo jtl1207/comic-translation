@@ -17,8 +17,7 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg"),
-                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -32,8 +31,7 @@ class Ui_MainWindow(object):
         self.splitter.setOrientation(QtCore.Qt.Orientation.Vertical)
         self.splitter.setObjectName("splitter")
         self.textEdit_3 = QtWidgets.QTextEdit(self.splitter)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding,
-                                           QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textEdit_3.sizePolicy().hasHeightForWidth())
@@ -63,8 +61,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
         self.textEdit = QtWidgets.QTextEdit(self.widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
@@ -85,8 +82,7 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 2, 0, 1, 1)
         self.textEdit_2 = QtWidgets.QTextEdit(self.widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textEdit_2.sizePolicy().hasHeightForWidth())
@@ -141,14 +137,14 @@ class Ui_MainWindow(object):
         font.setKerning(True)
         self.img.setFont(font)
         self.img.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-                               "color: rgba(0, 0, 0, 255);")
+"                                color: rgba(0, 0, 0, 255);\n"
+"                            ")
         self.img.setScaledContents(False)
         self.img.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.img.setObjectName("img")
         self.gridLayout_3.addWidget(self.img, 1, 0, 1, 1)
         self.widget_4 = QtWidgets.QWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
@@ -311,11 +307,17 @@ class Ui_MainWindow(object):
         self.label_13.setObjectName("label_13")
         self.pushButton_3 = QtWidgets.QPushButton(self.widget_4)
         self.pushButton_3.setGeometry(QtCore.QRect(260, 25, 71, 26))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
+        self.pushButton_3.setSizePolicy(sizePolicy)
         self.pushButton_3.setMinimumSize(QtCore.QSize(60, 26))
         self.pushButton_3.setSizeIncrement(QtCore.QSize(0, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("text-align:left;")
         self.pushButton_3.setCheckable(False)
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_14 = QtWidgets.QLabel(self.widget_4)
@@ -339,9 +341,9 @@ class Ui_MainWindow(object):
         self.label_16.setStyleSheet("")
         self.label_16.setObjectName("label_16")
         self.label_12 = QtWidgets.QLabel(self.widget_4)
-        self.label_12.setGeometry(QtCore.QRect(305, 29, 18, 18))
+        self.label_12.setGeometry(QtCore.QRect(306, 29, 18, 18))
         self.label_12.setStyleSheet("background-color: #000000;border-width:0px;border-radius:9px;\n"
-                                    "")
+"                                ")
         self.label_12.setText("")
         self.label_12.setObjectName("label_12")
         self.pushButton_11 = QtWidgets.QPushButton(self.widget_4)
@@ -509,48 +511,47 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "漫画快速翻译工具     sljly.xyz"))
-        self.textEdit_3.setHtml(_translate("MainWindow",
-                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-                                           "p, li { white-space: pre-wrap; }\n"
-                                           "</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-                                           "<p style=\"-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "漫画快速翻译工具 sljly.xyz"))
+        self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_7.setText(_translate("MainWindow", "原文"))
         self.label_8.setText(_translate("MainWindow", "译文"))
-        self.textEdit_2.setHtml(_translate("MainWindow",
-                                           "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                           "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-                                           "p, li { white-space: pre-wrap; }\n"
-                                           "</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-                                           "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                            </p></body></html>"))
         self.pushButton_5.setText(_translate("MainWindow", "确认"))
         self.pushButton_15.setText(_translate("MainWindow", "取消"))
         self.img.setText(_translate("MainWindow", "!!!!!!\n"
-                                                  "建议提前排好图片顺序与名称\n"
-                                                  "暂时不开启全自动\n"
-                                                  "因为文字渲染还不够完善,无法挑选字体与角度\n"
-                                                  "想要尝试可以把整张图选中,然后自动翻译\n"
-                                                  "\n"
-                                                  "有些人似乎特别讨厌机翻\n"
-                                                  "很多漫画其实有翻译都不错了\n"
-                                                  "部分字体符号大小可能会渲染异常,更换排列方式有概率解决\n"
-                                                  "!!!!!!\n"
-                                                  "\n"
-                                                  "1.左上角导入漫画,选择要翻译的语言,输出的字体\n"
-                                                  "2.手动选择区域,右下角确定\n"
-                                                  "\n"
-                                                  "环境要求:\n"
-                                                  "需要网络,使用Google翻译(中国)\n"
-                                                  "#没有足够优秀的翻译模型。\n"
-                                                  "有显卡可显著加快图像处理速度(CUDA)\n"
-                                                  "需要驱动版本>=472.50\n"
-                                                  "软件自带CUDA10.2与cudnn\n"
-                                                  "cpu非常慢\n"
-                                                  "\n"
-                                                  "字体下载地址:\n"
-                                                  "www.fonts.net.cn\n"
-                                                  "www.hellofont.cn(这个好用)"))
+"建议提前排好图片顺序与名称\n"
+"暂时不开启全自动\n"
+"因为文字渲染还不够完善,无法挑选字体与角度\n"
+"想要尝试可以把整张图选中,然后自动翻译\n"
+"\n"
+"有些人似乎特别讨厌机翻\n"
+"很多漫画其实有翻译都不错了\n"
+"部分字体符号大小可能会渲染异常,更换排列方式有概率解决\n"
+"!!!!!!\n"
+"\n"
+"1.左上角导入漫画,选择要翻译的语言,输出的字体\n"
+"2.手动选择区域,右下角确定\n"
+"\n"
+"环境要求:\n"
+"需要网络,使用Google翻译(中国)\n"
+"#没有足够优秀的翻译模型。\n"
+"有显卡可显著加快图像处理速度(CUDA)\n"
+"需要驱动版本>=472.50\n"
+"软件自带CUDA10.2与cudnn\n"
+"cpu非常慢\n"
+"\n"
+"字体下载地址:\n"
+"www.fonts.net.cn\n"
+"www.hellofont.cn(这个好用)"))
         self.pushButton_4.setText(_translate("MainWindow", "自动翻译"))
         self.pushButton_6.setText(_translate("MainWindow", "下一张"))
         self.pushButton_2.setText(_translate("MainWindow", "排列:自动"))
@@ -567,7 +568,7 @@ class Ui_MainWindow(object):
         self.pushButton_9.setText(_translate("MainWindow", "整页去字"))
         self.pushButton_10.setText(_translate("MainWindow", "整页翻译"))
         self.label_13.setText(_translate("MainWindow", "字体设置:"))
-        self.pushButton_3.setText(_translate("MainWindow", "颜色     "))
+        self.pushButton_3.setText(_translate("MainWindow", "  颜色"))
         self.label_14.setText(_translate("MainWindow", "图像修复:"))
         self.label_16.setText(_translate("MainWindow", "手动操作:"))
         self.pushButton_11.setText(_translate("MainWindow", "切换模式"))
@@ -594,6 +595,4 @@ class Ui_MainWindow(object):
         self.actioncn.setText(_translate("MainWindow", "中文"))
         self.actionen_2.setText(_translate("MainWindow", "English"))
         self.actionKorean.setText(_translate("MainWindow", "한국어"))
-
-
 from T import TLabel

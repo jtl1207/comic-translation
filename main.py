@@ -9,6 +9,7 @@ from tkinter import messagebox, Tk, filedialog, colorchooser
 import cv2
 import numpy as np
 import paddle
+import paddleocr
 from PIL import Image
 from PyQt6 import QtWidgets, QtCore, QtGui
 
@@ -18,7 +19,6 @@ from inpainting import Inpainting
 from interface import Ui_MainWindow
 from manga_ocr.ocr import MangaOcr
 from mtranslate import translate
-from paddleocr import PaddleOCR
 from textblockdetector import dispatch as textblockdetector
 from utils import compute_iou
 
@@ -225,7 +225,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.memory.model = MangaOcr()
             self.ui.actionja.setChecked(True)
         elif language == 'en':
-            self.memory.model = PaddleOCR(
+            self.memory.model = paddleocr.PaddleOCR(
                 show_log=False,  # 禁用日志
                 use_gpu=True,  # 使用gpu
                 cls=False,  # 角度分类
@@ -268,7 +268,7 @@ class MainWindow(QtWidgets.QMainWindow):
             )
             self.ui.actionen.setChecked(True)
         elif language == 'ko':
-            self.memory.model = PaddleOCR(
+            self.memory.model = paddleocr.PaddleOCR(
                 # show_log=False, #禁用日志
                 use_gpu=True,  # 使用gpu
                 cls=False,  # 角度分类
@@ -515,7 +515,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def change_word_colour(self):
         r = colorchooser.askcolor(title='文字颜色')
         self.var.word_conf.color = r[1]
-        self.ui.label_12.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:11px;')
+        self.ui.label_12.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:9px;')
         print(f'修改设置:文字输出颜色{r[1]}')
 
     # 图像修复开关

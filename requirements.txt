@@ -1,1 +1,140 @@
+paddlepaddle-gpu==2.2.2
+jaconv==0.3
+torchvision==0.11.3+cu102
+loguru==0.6.0
+paddleocr==2.4
+tensorflow-gpu==2.4.0
+transformers==4.17.0
+visualdl==2.2.3
+tensorboard==2.8.0
+pyqt6==6.2.3
+#imgaug==0.4.0
 
+# ----------------------Ignored dependent packages---------------------
+#altgraph==0.17.2
+#fire==0.4.0
+#fugashi==1.1.2
+#keras==2.8.0
+#libclang==13.0.0
+#pyinstaller-hooks-contrib==2022.2
+#pyperclip==1.8.2
+#pywin32-ctypes==0.2.0
+#qpt==1.0b3.dev1
+#tensorflow-io-gcs-filesystem==0.24.0
+#tf-estimator-nightly==2.8.0.dev2021122109
+#torchaudio==0.10.2+cu102
+#unidic-lite==1.0.8
+
+# ----------------------Ignored sub dependent packages---------------------
+
+# -----Dependencies of paddlepaddle-gpu
+#numpy<=1.19.3,>=1.13
+#six
+#decorator
+#protobuf>=3.1.0
+#requests>=2.20.0
+#astor
+#pillow
+
+# -----Dependencies of torchvision
+#numpy
+#torch==1.10.2
+#pillow!=8.3.0,>=5.3.0
+
+# -----Dependencies of loguru
+#win32-setctime>=1.0.0
+#colorama>=0.3.4
+
+# -----Dependencies of paddleocr
+#opencv-contrib-python==4.4.0.46
+#cython
+#lmdb
+#imgaug==0.4.0
+#pyclipper
+#tqdm
+#python-levenshtein
+#premailer
+#visualdl
+#lxml
+#paddlenlp>=2.2.1
+#scikit-image
+#numpy
+#shapely
+#openpyxl
+
+# -----Dependencies of tensorflow-gpu
+#wrapt~=1.12.1
+#google-pasta~=0.2
+#tensorflow-estimator<2.5.0,>=2.4.0rc0
+#keras-preprocessing~=1.1.2
+#grpcio~=1.32.0
+#absl-py~=0.10
+#protobuf>=3.9.2
+#six~=1.15.0
+#numpy~=1.19.2
+#termcolor~=1.1.0
+#typing-extensions~=3.7.4
+#gast==0.3.3
+#wheel~=0.35
+#flatbuffers~=1.12.0
+#astunparse~=1.6.3
+#tensorboard~=2.4
+#opt-einsum~=3.3.0
+#h5py~=2.10.0
+
+# -----Dependencies of transformers
+#filelock
+#regex!=2019.12.17
+#tokenizers!=0.11.3,>=0.11.1
+#tqdm>=4.27
+#packaging>=20.0
+#sacremoses
+#requests
+#huggingface-hub<1.0,>=0.1.0
+#numpy>=1.17
+#pyyaml>=5.1
+
+# -----Dependencies of visualdl
+#pandas
+#matplotlib
+#six>=1.14.0
+#protobuf>=3.11.0
+#flask>=1.1.1
+#flake8>=3.7.9
+#bce-python-sdk
+#requests
+#shellcheck-py
+#flask-babel>=1.0.0
+#numpy
+#pre-commit
+#pillow>=7.0.0
+
+# -----Dependencies of tensorboard
+#markdown>=2.6.8
+#setuptools>=41.0.0
+#google-auth<3,>=1.6.3
+#tensorboard-data-server<0.7.0,>=0.6.0
+#werkzeug>=0.11.15
+#grpcio>=1.24.3
+#tensorboard-plugin-wit>=1.6.0
+#numpy>=1.12.0
+#requests<3,>=2.21.0
+#wheel>=0.26
+#absl-py>=0.4
+#protobuf>=3.6.0
+#google-auth-oauthlib<0.5,>=0.4.1
+
+# -----Dependencies of pyqt6
+#pyqt6-sip<14,>=13.2
+#pyqt6-qt6>=6.2.3
+
+# -----Dependencies of imgaug
+#scikit-image>=0.14.2
+#opencv-python
+#matplotlib
+#numpy>=1.15
+#six
+#scipy
+#imageio
+#pillow
+#shapely

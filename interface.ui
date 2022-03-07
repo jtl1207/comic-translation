@@ -1,1425 +1,1417 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>MainWindow</class>
-    <widget class="QMainWindow" name="MainWindow">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>720</width>
-                <height>818</height>
-            </rect>
-        </property>
-        <property name="font">
-            <font>
-                <pointsize>9</pointsize>
-            </font>
-        </property>
-        <property name="windowTitle">
-            <string>漫画快速翻译工具 sljly.xyz</string>
-        </property>
-        <property name="windowIcon">
-            <iconset>
-                <normaloff>C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg</normaloff>
-                C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg
-            </iconset>
-        </property>
-        <widget class="QWidget" name="centralwidget">
-            <layout class="QGridLayout" name="gridLayout_3">
-                <property name="leftMargin">
-                    <number>5</number>
-                </property>
-                <property name="topMargin">
-                    <number>0</number>
-                </property>
-                <property name="rightMargin">
-                    <number>5</number>
-                </property>
-                <property name="bottomMargin">
-                    <number>5</number>
-                </property>
-                <property name="horizontalSpacing">
-                    <number>15</number>
-                </property>
-                <property name="verticalSpacing">
-                    <number>5</number>
-                </property>
-                <item row="1" column="1">
-                    <widget class="QSplitter" name="splitter">
-                        <property name="maximumSize">
-                            <size>
-                                <width>400</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="orientation">
-                            <enum>Qt::Vertical</enum>
-                        </property>
-                        <widget class="QTextEdit" name="textEdit_3">
-                            <property name="sizePolicy">
-                                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>100</width>
-                                    <height>400</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>400</width>
-                                    <height>0</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>9</pointsize>
-                                </font>
-                            </property>
-                            <property name="mouseTracking">
-                                <bool>false</bool>
-                            </property>
-                            <property name="verticalScrollBarPolicy">
-                                <enum>Qt::ScrollBarAlwaysOff</enum>
-                            </property>
-                            <property name="horizontalScrollBarPolicy">
-                                <enum>Qt::ScrollBarAlwaysOff</enum>
-                            </property>
-                            <property name="readOnly">
-                                <bool>true</bool>
-                            </property>
-                            <property name="markdown">
-                                <string/>
-                            </property>
-                            <property name="html">
-                                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-                                    &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta
-                                    charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-                                    p, li { white-space: pre-wrap; }
-                                    &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI';
-                                    font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-                                    &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px;
-                                    margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br
-                                    /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-                                </string>
-                            </property>
-                        </widget>
-                        <widget class="QWidget" name="widget" native="true">
-                            <layout class="QGridLayout" name="gridLayout">
-                                <item row="0" column="0">
-                                    <widget class="QLabel" name="label_7">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>0</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>16777215</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>原文</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item row="1" column="0">
-                                    <widget class="QTextEdit" name="textEdit">
-                                        <property name="sizePolicy">
-                                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                                                <horstretch>0</horstretch>
-                                                <verstretch>0</verstretch>
-                                            </sizepolicy>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>16777215</width>
-                                                <height>100</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>9</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="readOnly">
-                                            <bool>true</bool>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item row="2" column="0">
-                                    <widget class="QLabel" name="label_8">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>0</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>16777215</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>译文</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item row="3" column="0">
-                                    <widget class="QTextEdit" name="textEdit_2">
-                                        <property name="sizePolicy">
-                                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                                                <horstretch>0</horstretch>
-                                                <verstretch>0</verstretch>
-                                            </sizepolicy>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>16777215</width>
-                                                <height>100</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>9</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="documentTitle">
-                                            <string/>
-                                        </property>
-                                        <property name="html">
-                                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-                                                &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot;
-                                                /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-                                                p, li { white-space: pre-wrap; }
-                                                &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft
-                                                YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-                                                &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px;
-                                                margin-bottom:0px; margin-left:0px; margin-right:0px;
-                                                -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-                                            </string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item row="4" column="0">
-                                    <layout class="QHBoxLayout" name="horizontalLayout_2">
-                                        <item>
-                                            <widget class="QPushButton" name="pushButton_5">
-                                                <property name="enabled">
-                                                    <bool>false</bool>
-                                                </property>
-                                                <property name="sizePolicy">
-                                                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                                                        <horstretch>0</horstretch>
-                                                        <verstretch>0</verstretch>
-                                                    </sizepolicy>
-                                                </property>
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>69</width>
-                                                        <height>31</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>69</width>
-                                                        <height>31</height>
-                                                    </size>
-                                                </property>
-                                                <property name="font">
-                                                    <font>
-                                                        <pointsize>11</pointsize>
-                                                    </font>
-                                                </property>
-                                                <property name="text">
-                                                    <string>确认</string>
-                                                </property>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QPushButton" name="pushButton_15">
-                                                <property name="enabled">
-                                                    <bool>false</bool>
-                                                </property>
-                                                <property name="sizePolicy">
-                                                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                                                        <horstretch>0</horstretch>
-                                                        <verstretch>0</verstretch>
-                                                    </sizepolicy>
-                                                </property>
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>69</width>
-                                                        <height>31</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>69</width>
-                                                        <height>31</height>
-                                                    </size>
-                                                </property>
-                                                <property name="font">
-                                                    <font>
-                                                        <pointsize>11</pointsize>
-                                                    </font>
-                                                </property>
-                                                <property name="text">
-                                                    <string>取消</string>
-                                                </property>
-                                            </widget>
-                                        </item>
-                                    </layout>
-                                </item>
-                                <item row="5" column="0">
-                                    <widget class="QLabel" name="label_11">
-                                        <property name="text">
-                                            <string/>
-                                        </property>
-                                    </widget>
-                                </item>
-                            </layout>
-                        </widget>
-                    </widget>
-                </item>
-                <item row="1" column="0">
-                    <widget class="TLabel" name="img">
-                        <property name="minimumSize">
-                            <size>
-                                <width>450</width>
-                                <height>696</height>
-                            </size>
-                        </property>
-                        <property name="font">
-                            <font>
-                                <pointsize>12</pointsize>
-                                <kerning>true</kerning>
-                            </font>
-                        </property>
-                        <property name="styleSheet">
-                            <string notr="true">background-color: rgb(255, 255, 255);
-                                color: rgba(0, 0, 0, 255);
-                            </string>
-                        </property>
-                        <property name="text">
-                            <string>!!!!!!
-                                建议提前排好图片顺序与名称
-                                暂时不开启全自动
-                                因为文字渲染还不够完善,无法挑选字体与角度
-                                想要尝试可以把整张图选中,然后自动翻译
-
-                                有些人似乎特别讨厌机翻
-                                很多漫画其实有翻译都不错了
-                                部分字体符号大小可能会渲染异常,更换排列方式有概率解决
-                                !!!!!!
-
-                                1.左上角导入漫画,选择要翻译的语言,输出的字体
-                                2.手动选择区域,右下角确定
-
-                                环境要求:
-                                需要网络,使用Google翻译(中国)
-                                #没有足够优秀的翻译模型。
-                                有显卡可显著加快图像处理速度(CUDA)
-                                需要驱动版本&gt;=472.50
-                                软件自带CUDA10.2与cudnn
-                                cpu非常慢
-
-                                字体下载地址:
-                                www.fonts.net.cn
-                                www.hellofont.cn(这个好用)
-                            </string>
-                        </property>
-                        <property name="scaledContents">
-                            <bool>false</bool>
-                        </property>
-                        <property name="alignment">
-                            <set>Qt::AlignCenter</set>
-                        </property>
-                    </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                    <widget class="QWidget" name="widget_4" native="true">
-                        <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                            <size>
-                                <width>710</width>
-                                <height>86</height>
-                            </size>
-                        </property>
-                        <property name="maximumSize">
-                            <size>
-                                <width>16777215</width>
-                                <height>86</height>
-                            </size>
-                        </property>
-                        <widget class="QPushButton" name="pushButton_4">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>80</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>自动翻译</string>
-                            </property>
-                            <property name="checkable">
-                                <bool>false</bool>
-                            </property>
-                            <property name="checked">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_6">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>620</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>下一张</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_2">
-                            <property name="geometry">
-                                <rect>
-                                    <x>80</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>排列:自动</string>
-                            </property>
-                            <property name="checkable">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QWidget" name="layoutWidget">
-                            <property name="geometry">
-                                <rect>
-                                    <x>5</x>
-                                    <y>0</y>
-                                    <width>694</width>
-                                    <height>23</height>
-                                </rect>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout">
-                                <property name="spacing">
-                                    <number>6</number>
-                                </property>
-                                <item>
-                                    <widget class="QLabel" name="label">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="autoFillBackground">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="styleSheet">
-                                            <string notr="true"/>
-                                        </property>
-                                        <property name="text">
-                                            <string>当前队列:</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_3">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>16777215</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>0/0</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_9">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>cuda状态:</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_10">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>16777215</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>检测中</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_2">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>16777215</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>模型状态:</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_4">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>60</width>
-                                                <height>16777215</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>未加载</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_5">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>70</width>
-                                                <height>21</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>当前字体:</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                                <item>
-                                    <widget class="QLabel" name="label_6">
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>180</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                        <property name="maximumSize">
-                                            <size>
-                                                <width>16777215</width>
-                                                <height>16777215</height>
-                                            </size>
-                                        </property>
-                                        <property name="font">
-                                            <font>
-                                                <pointsize>11</pointsize>
-                                            </font>
-                                        </property>
-                                        <property name="text">
-                                            <string>华康翩翩体简-粗体</string>
-                                        </property>
-                                    </widget>
-                                </item>
-                            </layout>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_7">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>530</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>撤销</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_8">
-                            <property name="geometry">
-                                <rect>
-                                    <x>440</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>启用</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_9">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>350</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>整页去字</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_10">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>440</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>整页翻译</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" name="label_13">
-                            <property name="geometry">
-                                <rect>
-                                    <x>6</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>70</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>666666</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="autoFillBackground">
-                                <bool>false</bool>
-                            </property>
-                            <property name="styleSheet">
-                                <string notr="true"/>
-                            </property>
-                            <property name="text">
-                                <string>字体设置:</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_3">
-                            <property name="geometry">
-                                <rect>
-                                    <x>260</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>颜色</string>
-                            </property>
-                            <property name="checkable">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" name="label_14">
-                            <property name="geometry">
-                                <rect>
-                                    <x>350</x>
-                                    <y>25</y>
-                                    <width>70</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>70</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>666666</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="autoFillBackground">
-                                <bool>false</bool>
-                            </property>
-                            <property name="styleSheet">
-                                <string notr="true"/>
-                            </property>
-                            <property name="text">
-                                <string>图像修复:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" name="label_16">
-                            <property name="geometry">
-                                <rect>
-                                    <x>6</x>
-                                    <y>55</y>
-                                    <width>81</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>70</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>666666</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="autoFillBackground">
-                                <bool>false</bool>
-                            </property>
-                            <property name="styleSheet">
-                                <string notr="true"/>
-                            </property>
-                            <property name="text">
-                                <string>手动操作:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" name="label_12">
-                            <property name="geometry">
-                                <rect>
-                                    <x>305</x>
-                                    <y>29</y>
-                                    <width>18</width>
-                                    <height>18</height>
-                                </rect>
-                            </property>
-                            <property name="styleSheet">
-                                <string notr="true">background-color: #000000;border-width:0px;border-radius:9px;
-                                </string>
-                            </property>
-                            <property name="text">
-                                <string/>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_11">
-                            <property name="geometry">
-                                <rect>
-                                    <x>530</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>切换模式</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_12">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>260</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>文字去除</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_13">
-                            <property name="geometry">
-                                <rect>
-                                    <x>170</x>
-                                    <y>25</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>切换模式</string>
-                            </property>
-                            <property name="checkable">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" name="pushButton_14">
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>170</x>
-                                    <y>55</y>
-                                    <width>71</width>
-                                    <height>26</height>
-                                </rect>
-                            </property>
-                            <property name="minimumSize">
-                                <size>
-                                    <width>60</width>
-                                    <height>26</height>
-                                </size>
-                            </property>
-                            <property name="maximumSize">
-                                <size>
-                                    <width>120</width>
-                                    <height>16777215</height>
-                                </size>
-                            </property>
-                            <property name="sizeIncrement">
-                                <size>
-                                    <width>0</width>
-                                    <height>31</height>
-                                </size>
-                            </property>
-                            <property name="font">
-                                <font>
-                                    <pointsize>11</pointsize>
-                                </font>
-                            </property>
-                            <property name="text">
-                                <string>添加文字</string>
-                            </property>
-                        </widget>
-                        <zorder>pushButton_4</zorder>
-                        <zorder>pushButton_6</zorder>
-                        <zorder>pushButton_2</zorder>
-                        <zorder>layoutWidget</zorder>
-                        <zorder>pushButton_7</zorder>
-                        <zorder>pushButton_8</zorder>
-                        <zorder>pushButton_9</zorder>
-                        <zorder>pushButton_10</zorder>
-                        <zorder>label_13</zorder>
-                        <zorder>pushButton_3</zorder>
-                        <zorder>label_14</zorder>
-                        <zorder>label_16</zorder>
-                        <zorder>pushButton_11</zorder>
-                        <zorder>pushButton_12</zorder>
-                        <zorder>label_12</zorder>
-                        <zorder>pushButton_13</zorder>
-                        <zorder>pushButton_14</zorder>
-                    </widget>
-                </item>
-            </layout>
-        </widget>
-        <widget class="QMenuBar" name="menuBar">
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>720</width>
-                    <height>26</height>
-                </rect>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>818</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>漫画快速翻译工具 sljly.xyz</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg</normaloff>C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <property name="leftMargin">
+     <number>5</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>5</number>
+    </property>
+    <property name="bottomMargin">
+     <number>5</number>
+    </property>
+    <property name="horizontalSpacing">
+     <number>15</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>5</number>
+    </property>
+    <item row="1" column="1">
+     <widget class="QSplitter" name="splitter">
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QTextEdit" name="textEdit_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>400</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="markdown">
+        <string/>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="widget" native="true">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>原文</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTextEdit" name="textEdit">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>译文</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QTextEdit" name="textEdit_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="documentTitle">
+           <string/>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="pushButton_5">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>69</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>69</width>
+              <height>31</height>
+             </size>
             </property>
             <property name="font">
-                <font>
-                    <pointsize>11</pointsize>
-                </font>
-            </property>
-            <property name="mouseTracking">
-                <bool>false</bool>
-            </property>
-            <property name="tabletTracking">
-                <bool>false</bool>
-            </property>
-            <property name="acceptDrops">
-                <bool>false</bool>
-            </property>
-            <property name="defaultUp">
-                <bool>false</bool>
-            </property>
-            <property name="nativeMenuBar">
-                <bool>true</bool>
-            </property>
-            <widget class="QMenu" name="menu_2">
-                <property name="contextMenuPolicy">
-                    <enum>Qt::NoContextMenu</enum>
-                </property>
-                <property name="acceptDrops">
-                    <bool>true</bool>
-                </property>
-                <property name="inputMethodHints">
-                    <set>Qt::ImhNone</set>
-                </property>
-                <property name="tearOffEnabled">
-                    <bool>false</bool>
-                </property>
-                <property name="title">
-                    <string>帮助</string>
-                </property>
-                <property name="separatorsCollapsible">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTipsVisible">
-                    <bool>false</bool>
-                </property>
-                <addaction name="action1"/>
-                <addaction name="action2"/>
-                <addaction name="separator"/>
-                <addaction name="action3"/>
-            </widget>
-            <widget class="QMenu" name="menu_4">
-                <property name="acceptDrops">
-                    <bool>false</bool>
-                </property>
-                <property name="title">
-                    <string>原始语言</string>
-                </property>
-                <property name="separatorsCollapsible">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTipsVisible">
-                    <bool>false</bool>
-                </property>
-                <addaction name="actionja"/>
-                <addaction name="actionen"/>
-                <addaction name="actionko"/>
-            </widget>
-            <widget class="QMenu" name="menu">
-                <property name="title">
-                    <string>文件</string>
-                </property>
-                <addaction name="actionin_imgs"/>
-                <addaction name="actionin_img"/>
-            </widget>
-            <widget class="QMenu" name="menu_3">
-                <property name="title">
-                    <string>输出语言</string>
-                </property>
-                <addaction name="actioncn"/>
-                <addaction name="actionen_2"/>
-                <addaction name="actionKorean"/>
-            </widget>
-            <addaction name="menu"/>
-            <addaction name="menu_4"/>
-            <addaction name="menu_3"/>
-            <addaction name="menu_2"/>
-        </widget>
-        <action name="actionja">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="checked">
-                <bool>true</bool>
+             <font>
+              <pointsize>11</pointsize>
+             </font>
             </property>
             <property name="text">
-                <string>日语</string>
+             <string>确认</string>
             </property>
-            <property name="autoRepeat">
-                <bool>true</bool>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_15">
+            <property name="enabled">
+             <bool>false</bool>
             </property>
-            <property name="visible">
-                <bool>true</bool>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="iconVisibleInMenu">
-                <bool>false</bool>
+            <property name="minimumSize">
+             <size>
+              <width>69</width>
+              <height>31</height>
+             </size>
             </property>
-            <property name="shortcutVisibleInContextMenu">
-                <bool>false</bool>
+            <property name="maximumSize">
+             <size>
+              <width>69</width>
+              <height>31</height>
+             </size>
             </property>
-        </action>
-        <action name="actionen">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>英语</string>
-            </property>
-            <property name="autoRepeat">
-                <bool>false</bool>
-            </property>
-            <property name="visible">
-                <bool>true</bool>
-            </property>
-            <property name="iconVisibleInMenu">
-                <bool>false</bool>
-            </property>
-            <property name="shortcutVisibleInContextMenu">
-                <bool>false</bool>
-            </property>
-        </action>
-        <action name="action1">
-            <property name="checkable">
-                <bool>false</bool>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
             </property>
             <property name="text">
-                <string>博客</string>
+             <string>取消</string>
             </property>
-            <property name="iconVisibleInMenu">
-                <bool>false</bool>
-            </property>
-            <property name="shortcutVisibleInContextMenu">
-                <bool>false</bool>
-            </property>
-        </action>
-        <action name="action2">
-            <property name="text">
-                <string>github</string>
-            </property>
-        </action>
-        <action name="action3">
-            <property name="text">
-                <string>版本1.0</string>
-            </property>
-        </action>
-        <action name="actionko">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>韩语</string>
-            </property>
-        </action>
-        <action name="actionen2">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>英语2.0</string>
-            </property>
-        </action>
-        <action name="action1_2">
-            <property name="text">
-                <string>1</string>
-            </property>
-        </action>
-        <action name="action1_3">
-            <property name="text">
-                <string>1</string>
-            </property>
-        </action>
-        <action name="actionin_imgs">
-            <property name="text">
-                <string>导入文件夹</string>
-            </property>
-        </action>
-        <action name="actionin_img">
-            <property name="text">
-                <string>导入图片</string>
-            </property>
-        </action>
-        <action name="actionxt">
-            <property name="text">
-                <string>选择字体</string>
-            </property>
-        </action>
-        <action name="actionother">
-            <property name="text">
-                <string>导入字体</string>
-            </property>
-        </action>
-        <action name="actioncn">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="checked">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>中文</string>
-            </property>
-        </action>
-        <action name="actionen_2">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>English</string>
-            </property>
-        </action>
-        <action name="actionKorean">
-            <property name="text">
-                <string>한국어</string>
-            </property>
-        </action>
-    </widget>
-    <customwidgets>
-        <customwidget>
-            <class>TLabel</class>
-            <extends>QLabel</extends>
-            <header location="global">T.h</header>
-        </customwidget>
-    </customwidgets>
-    <resources/>
-    <connections/>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="TLabel" name="img">
+      <property name="minimumSize">
+       <size>
+        <width>450</width>
+        <height>696</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+                                color: rgba(0, 0, 0, 255);
+                            </string>
+      </property>
+      <property name="text">
+       <string>使用方法:
+1.提前排好图片顺序与名称
+2.打开软件（需要10秒）
+3.导入漫画，字体
+4.设置要翻译的语言
+5.手动选择区域，选择需要的功能
+6.手动修改译文，点击确定
+
+想要尝试全自动翻译可以把整张图选中,然后点击自动翻译
+部分标点符号大小可能会渲染异常,更换排列方式有概率解决
+
+环境要求:
+需要网络,使用Google翻译(中国)
+有显卡可显著加快图像处理速度(CUDA)
+cpu会非常慢
+需要驱动版本&gt;=472.50
+整合包自带CUDA10.2与cudnn不需要额外安装
+
+字体下载地址:
+www.hellofont.cn</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QWidget" name="widget_4" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>710</width>
+        <height>86</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>86</height>
+       </size>
+      </property>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>自动翻译</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>下一张</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>排列:自动</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>0</y>
+         <width>694</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>当前队列:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>0/0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>cuda状态:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>检测中</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>模型状态:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>未加载</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>21</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>当前字体:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="minimumSize">
+           <size>
+            <width>180</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>华康翩翩体简-粗体</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>撤销</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>启用</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>整页去字</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_10">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>整页翻译</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>666666</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>字体设置:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">text-align:left;</string>
+       </property>
+       <property name="text">
+        <string>  颜色</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>25</y>
+         <width>70</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>666666</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>图像修复:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>55</y>
+         <width>81</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>666666</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>手动操作:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>306</x>
+         <y>29</y>
+         <width>18</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #000000;border-width:0px;border-radius:9px;
+                                </string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_11">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>切换模式</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_12">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>文字去除</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_13">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>切换模式</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_14">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>55</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>添加文字</string>
+       </property>
+      </widget>
+      <zorder>pushButton_4</zorder>
+      <zorder>pushButton_6</zorder>
+      <zorder>pushButton_2</zorder>
+      <zorder>layoutWidget</zorder>
+      <zorder>pushButton_7</zorder>
+      <zorder>pushButton_8</zorder>
+      <zorder>pushButton_9</zorder>
+      <zorder>pushButton_10</zorder>
+      <zorder>label_13</zorder>
+      <zorder>pushButton_3</zorder>
+      <zorder>label_14</zorder>
+      <zorder>label_16</zorder>
+      <zorder>pushButton_11</zorder>
+      <zorder>pushButton_12</zorder>
+      <zorder>label_12</zorder>
+      <zorder>pushButton_13</zorder>
+      <zorder>pushButton_14</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>720</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menu_2">
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <property name="separatorsCollapsible">
+     <bool>false</bool>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>false</bool>
+    </property>
+    <addaction name="action1"/>
+    <addaction name="action2"/>
+    <addaction name="separator"/>
+    <addaction name="action3"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>原始语言</string>
+    </property>
+    <property name="separatorsCollapsible">
+     <bool>false</bool>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>false</bool>
+    </property>
+    <addaction name="actionja"/>
+    <addaction name="actionen"/>
+    <addaction name="actionko"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionin_imgs"/>
+    <addaction name="actionin_img"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>输出语言</string>
+    </property>
+    <addaction name="actioncn"/>
+    <addaction name="actionen_2"/>
+    <addaction name="actionKorean"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <action name="actionja">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>日语</string>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>英语</string>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action1">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>博客</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action2">
+   <property name="text">
+    <string>github</string>
+   </property>
+  </action>
+  <action name="action3">
+   <property name="text">
+    <string>版本1.0</string>
+   </property>
+  </action>
+  <action name="actionko">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>韩语</string>
+   </property>
+  </action>
+  <action name="actionen2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>英语2.0</string>
+   </property>
+  </action>
+  <action name="action1_2">
+   <property name="text">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="action1_3">
+   <property name="text">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="actionin_imgs">
+   <property name="text">
+    <string>导入文件夹</string>
+   </property>
+  </action>
+  <action name="actionin_img">
+   <property name="text">
+    <string>导入图片</string>
+   </property>
+  </action>
+  <action name="actionxt">
+   <property name="text">
+    <string>选择字体</string>
+   </property>
+  </action>
+  <action name="actionother">
+   <property name="text">
+    <string>导入字体</string>
+   </property>
+  </action>
+  <action name="actioncn">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>中文</string>
+   </property>
+  </action>
+  <action name="actionen_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionKorean">
+   <property name="text">
+    <string>한국어</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">T.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
 </ui>
