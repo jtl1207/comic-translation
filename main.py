@@ -353,20 +353,20 @@ class MainWindow(QtWidgets.QMainWindow):
             files.sort(key=lambda x: int("".join(list(filter(str.isdigit, x)))))  # 文件名按数字排序
             self.memory.task_out = os.path.dirname(path) + '/out/'
             for file_path in files:
-                # try:
-                img = cv2.imread(file_path)
                 try:
-                    height, width, channel = img.shape
+                    try:
+                        img = cv2.imread(file_path)
+                        height, width, channel = img.shape
+                    except:
+                        img = self.cv2_imread(file_path)
+                        height, width, channel = img.shape
+                    if channel == 1:
+                        img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
+                    self.memory.task_img.append(img)
+                    self.state.task_num += 1
+                    self.memory.task_name.append(os.path.basename(file_path))
                 except:
-                    img = self.cv2_imread(file_path)
-                    height, width, channel = img.shape
-                if channel == 1:
-                    img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-                self.memory.task_img.append(img)
-                self.state.task_num += 1
-                self.memory.task_name.append(os.path.basename(file_path))
-                # except:
-                #     messagebox.showerror(title='错误', message=f'{file_path}图片读取错误')
+                    messagebox.showerror(title='错误', message=f'{file_path}图片读取错误')
             if self.state.task_num == 0:
                 self.panel_clean()
                 print(f'未检测到图片')
@@ -381,8 +381,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 return
             root, ext = os.path.splitext(os.path.basename(path))
             try:
-                img = cv2.imread(path)
                 try:
+                    img = cv2.imread(path)
                     height, width, channel = img.shape
                 except:
                     img = self.cv2_imread(path)
