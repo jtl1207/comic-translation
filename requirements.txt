@@ -1,6 +1,6 @@
 paddlepaddle-gpu==2.2.2
 jaconv==0.3
-torchvision==0.11.3+cu102
+torchvision==0.11.3
 loguru==0.6.0
 paddleocr==2.4
 tensorflow-gpu==2.4.0
@@ -8,12 +8,15 @@ transformers==4.17.0
 visualdl==2.2.3
 tensorboard==2.8.0
 pyqt6==6.2.3
-#imgaug==0.4.0
+imgaug==0.4.0
+python-Levenshtein-wheels==0.13.2
+opencv-python==4.5.4.60
+fugashi==1.1.2
+unidic-lite==1.0.8
 
 # ----------------------Ignored dependent packages---------------------
 #altgraph==0.17.2
 #fire==0.4.0
-#fugashi==1.1.2
 #keras==2.8.0
 #libclang==13.0.0
 #pyinstaller-hooks-contrib==2022.2
@@ -23,7 +26,6 @@ pyqt6==6.2.3
 #tensorflow-io-gcs-filesystem==0.24.0
 #tf-estimator-nightly==2.8.0.dev2021122109
 #torchaudio==0.10.2+cu102
-#unidic-lite==1.0.8
 
 # ----------------------Ignored sub dependent packages---------------------
 
