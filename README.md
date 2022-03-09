@@ -10,7 +10,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 注意30系显卡不支持cuda10.2，但是11.1支持的显卡更少。
 
 普通用户这里[下载](https://github.com/jtl1207/comic-translation/releases "下载")  
-注意30系显卡不支持cuda10.2，但是11.1要求的显卡驱动更高。([这里查看驱动要求](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html "docs.nvidia.com"))  
+注意30系显卡不支持cuda10.2，如果需要更高版本请在问题里留言，我会更新版本。([这里查看驱动要求](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html "docs.nvidia.com"))  
 显卡驱动版本过低将导致程序卡住，暂时不支持A卡。
 为了更好的显示错误原因，整合包保留了控制台。  
 第一次打开会安装虚拟环境，需要数分钟，安装结束有报错没有关系(4个)，所有文件已经提前放好了。  
