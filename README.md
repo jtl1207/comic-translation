@@ -7,6 +7,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 ## 安装
 开发者直接git  
 注意paddle，pytorch，tensorflow2 需要官网下载，任意版本，现在是cuda10.2的。
+注意30系显卡不支持cuda10.2
 
 普通用户这里[下载](https://github.com/jtl1207/comic-translation/releases "下载")  
 为了更好的显示错误原因，整合包保留了控制台。  
