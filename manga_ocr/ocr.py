@@ -16,14 +16,14 @@ class MangaOcr:
         self.model = VisionEncoderDecoderModel.from_pretrained(pretrained_model_name_or_path)
 
         if not force_cpu and torch.cuda.is_available():
-            logger.info('Using CUDA')
+            logger.info('torch using CUDA')
             self.model.cuda()
         else:
-            logger.info('Using CPU')
+            logger.info('torch using CPU')
 
-        self(Path(__file__).parent / 'assets/example.jpg')
+        #self(Path(__file__).parent / 'assets/example.jpg')
 
-        print('OCR 就绪')
+        print('pytorch 就绪')
 
     def __call__(self, img_or_path):
         if isinstance(img_or_path, str) or isinstance(img_or_path, Path):

@@ -17,6 +17,7 @@ from covermaker import conf
 from covermaker import render
 from inpainting import Inpainting
 from interface import Ui_MainWindow
+from characterStyle import Ui_Dialog as CharacterStyleDialog
 from manga_ocr.ocr import MangaOcr
 from mtranslate import translate
 from textblockdetector import dispatch as textblockdetector
@@ -84,6 +85,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
+        self.setWindowIcon(QtGui.QIcon('ico.png'))
         self.ui.setupUi(self)
 
         self.var = var()
@@ -152,6 +154,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(lambda event: self.change_word_way())
         self.ui.pushButton_13.clicked.connect(lambda event: self.change_word_mod())
         self.ui.pushButton_3.clicked.connect(lambda event: self.change_word_colour())
+        self.ui.pushButton_16.clicked.connect(lambda event: self.new_character_style_window())
         self.ui.pushButton_8.clicked.connect(lambda event: self.change_img_re())
         self.ui.pushButton_11.clicked.connect(lambda event: self.change_img_mod())
 
@@ -507,9 +510,11 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.var.word_mod == 'auto':
             self.var.word_mod = 'Handmade'
             print('修改设置:文字定位模式:手动')
+            self.ui.pushButton_13.setText('定位:手动')
         else:
             self.var.word_mod = 'auto'
             print('修改设置:文字定位模式:自动')
+            self.ui.pushButton_13.setText('定位:自动')
 
     # 输出文字颜色
     def change_word_colour(self):
@@ -517,6 +522,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.var.word_conf.color = r[1]
         self.ui.label_12.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:9px;')
         print(f'修改设置:文字输出颜色{r[1]}')
+
+    # 字距设置
+    def new_character_style_window(self):
+        Window = CharacterStyle()
+        Window.ui.lineEdit.setText(str(self.var.word_conf.letter_spacing_factor))
+        Window.ui.lineEdit_2.setText(str(self.var.word_conf.line_spacing_factor))
+        Window.exec()
+        if Window.re[0]:
+            self.var.word_conf.letter_spacing_factor = float(Window.ui.lineEdit.text())
+            print(f'修改设置:字距{self.var.word_conf.letter_spacing_factor}')
+            self.var.word_conf.line_spacing_factor = float(Window.ui.lineEdit_2.text())
+            print(f'修改设置:行距{self.var.word_conf.line_spacing_factor}')
+        Window.destroy()
 
     # 图像修复开关
     def change_img_re(self):
@@ -844,6 +862,31 @@ class MainWindow(QtWidgets.QMainWindow):
         img1 = self.memory.img_show.copy()
         img1[mark > 0] = 255
         self.memory.img_repair = Inpainting(img1, mark)
+
+
+# 字距设置窗口
+class CharacterStyle(QtWidgets.QDialog):
+    def __init__(self):
+        super().__init__()
+        self.ui = CharacterStyleDialog()
+        self.setWindowIcon(QtGui.QIcon('img.png'))
+        self.setWindowFlags(QtCore.Qt.WindowType.WindowCloseButtonHint)
+        self.ui.setupUi(self)
+
+        self.ui.lineEdit.setValidator(QtGui.QDoubleValidator())
+        self.ui.lineEdit_2.setValidator(QtGui.QDoubleValidator())
+
+        self.ui.pushButton.clicked.connect(self.ok)
+        self.ui.pushButton_2.clicked.connect(self.close)
+        self.re = [False, 0, 0]
+
+    def ok(self):
+        self.re = [True, float(self.ui.lineEdit.text()), float(self.ui.lineEdit_2.text())]
+        self.accept()
+
+    def close(self):
+        self.re = [False, 0, 0]
+        self.reject()
 
 
 if __name__ == '__main__':

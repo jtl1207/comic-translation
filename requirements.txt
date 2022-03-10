@@ -1,6 +1,6 @@
 paddlepaddle-gpu==2.2.2
 jaconv==0.3
-torchvision==0.11.3
+torchvision==0.10.1
 loguru==0.6.0
 paddleocr==2.4
 tensorflow-gpu==2.4.0
@@ -13,6 +13,7 @@ python-Levenshtein-wheels==0.13.2
 opencv-python==4.5.4.60
 fugashi==1.1.2
 unidic-lite==1.0.8
+bce-python-sdk
 
 # ----------------------Ignored dependent packages---------------------
 #altgraph==0.17.2
@@ -103,7 +104,6 @@ unidic-lite==1.0.8
 #protobuf>=3.11.0
 #flask>=1.1.1
 #flake8>=3.7.9
-#bce-python-sdk
 #requests
 #shellcheck-py
 #flask-babel>=1.0.0

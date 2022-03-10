@@ -17,7 +17,8 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ico.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ico.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -267,7 +268,7 @@ class Ui_MainWindow(object):
         self.pushButton_7.setFont(font)
         self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_8 = QtWidgets.QPushButton(self.widget_4)
-        self.pushButton_8.setGeometry(QtCore.QRect(440, 25, 71, 26))
+        self.pushButton_8.setGeometry(QtCore.QRect(530, 25, 71, 26))
         self.pushButton_8.setMinimumSize(QtCore.QSize(60, 26))
         self.pushButton_8.setMaximumSize(QtCore.QSize(120, 16777215))
         self.pushButton_8.setSizeIncrement(QtCore.QSize(0, 31))
@@ -321,7 +322,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setCheckable(False)
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_14 = QtWidgets.QLabel(self.widget_4)
-        self.label_14.setGeometry(QtCore.QRect(350, 25, 70, 26))
+        self.label_14.setGeometry(QtCore.QRect(440, 25, 70, 26))
         self.label_14.setMinimumSize(QtCore.QSize(70, 26))
         self.label_14.setMaximumSize(QtCore.QSize(666666, 26))
         font = QtGui.QFont()
@@ -347,7 +348,7 @@ class Ui_MainWindow(object):
         self.label_12.setText("")
         self.label_12.setObjectName("label_12")
         self.pushButton_11 = QtWidgets.QPushButton(self.widget_4)
-        self.pushButton_11.setGeometry(QtCore.QRect(530, 25, 71, 26))
+        self.pushButton_11.setGeometry(QtCore.QRect(620, 25, 71, 26))
         self.pushButton_11.setMinimumSize(QtCore.QSize(60, 26))
         self.pushButton_11.setMaximumSize(QtCore.QSize(120, 16777215))
         self.pushButton_11.setSizeIncrement(QtCore.QSize(0, 31))
@@ -384,6 +385,15 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.pushButton_14.setFont(font)
         self.pushButton_14.setObjectName("pushButton_14")
+        self.pushButton_16 = QtWidgets.QPushButton(self.widget_4)
+        self.pushButton_16.setGeometry(QtCore.QRect(350, 25, 71, 26))
+        self.pushButton_16.setMinimumSize(QtCore.QSize(60, 26))
+        self.pushButton_16.setSizeIncrement(QtCore.QSize(0, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.pushButton_16.setFont(font)
+        self.pushButton_16.setCheckable(False)
+        self.pushButton_16.setObjectName("pushButton_16")
         self.pushButton_4.raise_()
         self.pushButton_6.raise_()
         self.pushButton_2.raise_()
@@ -401,6 +411,7 @@ class Ui_MainWindow(object):
         self.label_12.raise_()
         self.pushButton_13.raise_()
         self.pushButton_14.raise_()
+        self.pushButton_16.raise_()
         self.gridLayout_3.addWidget(self.widget_4, 0, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
@@ -527,31 +538,26 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                            </p></body></html>"))
         self.pushButton_5.setText(_translate("MainWindow", "确认"))
         self.pushButton_15.setText(_translate("MainWindow", "取消"))
-        self.img.setText(_translate("MainWindow", "!!!!!!\n"
-"建议提前排好图片顺序与名称\n"
-"暂时不开启全自动\n"
-"因为文字渲染还不够完善,无法挑选字体与角度\n"
-"想要尝试可以把整张图选中,然后自动翻译\n"
+        self.img.setText(_translate("MainWindow", "使用方法:\n"
+"1.提前排好图片顺序与名称\n"
+"2.打开软件（需要10秒）\n"
+"3.导入漫画，字体\n"
+"4.设置要翻译的语言\n"
+"5.手动选择区域，选择需要的功能\n"
+"6.手动修改译文，点击确定\n"
 "\n"
-"有些人似乎特别讨厌机翻\n"
-"很多漫画其实有翻译都不错了\n"
-"部分字体符号大小可能会渲染异常,更换排列方式有概率解决\n"
-"!!!!!!\n"
-"\n"
-"1.左上角导入漫画,选择要翻译的语言,输出的字体\n"
-"2.手动选择区域,右下角确定\n"
+"想要尝试全自动翻译可以把整张图选中,然后点击自动翻译\n"
+"部分标点符号大小可能会渲染异常,更换排列方式有概率解决\n"
 "\n"
 "环境要求:\n"
 "需要网络,使用Google翻译(中国)\n"
-"#没有足够优秀的翻译模型。\n"
 "有显卡可显著加快图像处理速度(CUDA)\n"
+"cpu会非常慢\n"
 "需要驱动版本>=472.50\n"
-"软件自带CUDA10.2与cudnn\n"
-"cpu非常慢\n"
+"整合包自带CUDA10.2与cudnn不需要额外安装\n"
 "\n"
 "字体下载地址:\n"
-"www.fonts.net.cn\n"
-"www.hellofont.cn(这个好用)"))
+"www.hellofont.cn"))
         self.pushButton_4.setText(_translate("MainWindow", "自动翻译"))
         self.pushButton_6.setText(_translate("MainWindow", "下一张"))
         self.pushButton_2.setText(_translate("MainWindow", "排列:自动"))
@@ -573,8 +579,9 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "手动操作:"))
         self.pushButton_11.setText(_translate("MainWindow", "切换模式"))
         self.pushButton_12.setText(_translate("MainWindow", "文字去除"))
-        self.pushButton_13.setText(_translate("MainWindow", "切换模式"))
+        self.pushButton_13.setText(_translate("MainWindow", "定位:自动"))
         self.pushButton_14.setText(_translate("MainWindow", "添加文字"))
+        self.pushButton_16.setText(_translate("MainWindow", "字距设置"))
         self.menu_2.setTitle(_translate("MainWindow", "帮助"))
         self.menu_4.setTitle(_translate("MainWindow", "原始语言"))
         self.menu.setTitle(_translate("MainWindow", "文件"))

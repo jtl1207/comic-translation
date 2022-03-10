@@ -20,7 +20,8 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg</normaloff>C:/Users/24019/OneDrive/桌面/jtl/tp/20140726134027_UGnYt.jpeg</iconset>
+    <normaloff>ico.png</normaloff>
+    <normalon>ico.png</normalon>ico.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -728,7 +729,7 @@ www.hellofont.cn</string>
       <widget class="QPushButton" name="pushButton_8">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>530</x>
          <y>25</y>
          <width>71</width>
          <height>26</height>
@@ -920,7 +921,7 @@ www.hellofont.cn</string>
       <widget class="QLabel" name="label_14">
        <property name="geometry">
         <rect>
-         <x>350</x>
+         <x>440</x>
          <y>25</y>
          <width>70</width>
          <height>26</height>
@@ -1009,7 +1010,7 @@ www.hellofont.cn</string>
       <widget class="QPushButton" name="pushButton_11">
        <property name="geometry">
         <rect>
-         <x>530</x>
+         <x>620</x>
          <y>25</y>
          <width>71</width>
          <height>26</height>
@@ -1108,7 +1109,7 @@ www.hellofont.cn</string>
         </font>
        </property>
        <property name="text">
-        <string>切换模式</string>
+        <string>定位:自动</string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -1153,6 +1154,39 @@ www.hellofont.cn</string>
         <string>添加文字</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="pushButton_16">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>25</y>
+         <width>71</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>字距设置</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
       <zorder>pushButton_4</zorder>
       <zorder>pushButton_6</zorder>
       <zorder>pushButton_2</zorder>
@@ -1170,6 +1204,7 @@ www.hellofont.cn</string>
       <zorder>label_12</zorder>
       <zorder>pushButton_13</zorder>
       <zorder>pushButton_14</zorder>
+      <zorder>pushButton_16</zorder>
      </widget>
     </item>
    </layout>

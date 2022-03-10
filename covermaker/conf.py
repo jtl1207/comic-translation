@@ -24,6 +24,6 @@ class Section(object):
     align = 'ct'  # 文本对齐方式 lt 表示垂直左对齐，水平顶端上对齐 {l r t b c} 分别表示 {左 右 上 下 中}
     valign = align[0]
     halign = align[1]
-    line_spacing_factor = 0  # 行高  0是默认 1是2倍行高 -1是0
-    letter_spacing_factor = -0.2  # 字符间距
+    line_spacing_factor = 0.3  # 行高  0是默认 1是2倍行高 -1是0
+    letter_spacing_factor = 0.2  # 字符间距
     degree = 0  # 旋转角度
