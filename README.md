@@ -37,7 +37,7 @@ cpu会非常慢
 字体下载地址:  
 [www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
 ## 效果
-##### 界面展示(版本更新很快，已过时)
+##### 界面展示(旧版)
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")
 ##### 口语翻译有待加强
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")
