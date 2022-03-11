@@ -175,6 +175,7 @@ class MainWindow(QtWidgets.QMainWindow):
         thread_cuda = threading.Thread(target=self.thred_cuda)  # cuda
         thread_cuda.setDaemon(True)
         thread_cuda.start()
+        self.config_read()
 
 
     # 检测cuda状态
