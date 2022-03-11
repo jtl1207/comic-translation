@@ -4,6 +4,7 @@ import shutil
 import sys
 import threading
 import time
+import configparser
 from tkinter import messagebox, Tk, filedialog, colorchooser
 
 import cv2
@@ -37,14 +38,14 @@ class Shell(QtCore.QObject):
 
 
 # 程序参数
-class var():
-    img_re_bool = True  # 图像修复开关
-    img_re_mod = 1  # 图像修复模式
+class var:
     img_language = 'ja'  # 原始语言
-    word_way = 0  # 文字输出方向
     word_language = 'zh-CN'  # 翻译语言
+    word_way = 0  # 文字输出方向
     word_conf = conf.Section()  # 文字输出参数
     word_mod = 'auto'  # 文字定位模式
+    img_re_bool = True  # 图像修复开关
+    img_re_mod = 1  # 图像修复模式
 
 
 # 运行中的缓存文件
@@ -174,34 +175,32 @@ class MainWindow(QtWidgets.QMainWindow):
         thread_cuda = threading.Thread(target=self.thred_cuda)  # cuda
         thread_cuda.setDaemon(True)
         thread_cuda.start()
-        thread_language = threading.Thread(target=self.thread_language('ja'))
-        thread_language.setDaemon(True)
-        thread_language.start()
+
 
     # 检测cuda状态
     def thred_cuda(self):
         try:
             if paddle.device.is_compiled_with_cuda():
                 if paddle.device.get_device() == 'cpu':
-                    print('警告:gpu丢失\n切换至cpu')
+                    print('War:gpu丢失\n切换至cpu')
                     self.ui.label_10.setText('异常')
                 elif paddle.device.get_device() == 'gpu:0':
-                    print(f'自检:gpu正常:数量{paddle.device.cuda.device_count()}')
+                    print(f'Debug:gpu正常:数量{paddle.device.cuda.device_count()}')
                     self.ui.label_10.setText('正常')
             else:
-                print('错误:当前版本不支持gpu')
+                print('Error:当前版本不支持gpu')
                 self.ui.label_10.setText('异常')
         except:
-            print('错误:paddle异常')
+            print('Error:paddle异常')
             self.ui.label_10.setText('异常')
         t = time.time()
         try:
             text = translate("hello", "zh-CN", "auto")
-            print(f'自检:网络正常,ping:{(time.time() - t) * 1000:.0f}ms')
+            print(f'Debug:网络正常,ping:{(time.time() - t) * 1000:.0f}ms')
             if text != '你好':
-                print('错误:翻译错误,api异常')
+                print('Error:翻译Error,api异常')
         except:
-            print(f'错误:网络异常,google翻译无法使用')
+            print(f'Error:网络异常,google翻译无法使用')
         self.state.use_cuda = True
 
     # 切换语言
@@ -215,11 +214,10 @@ class MainWindow(QtWidgets.QMainWindow):
             thread_language = threading.Thread(target=self.thread_language('en'))
         elif language == 'ko':
             thread_language = threading.Thread(target=self.thread_language('ko'))
-        elif language == 'en2':
-            thread_language = threading.Thread(target=self.thread_language('en2'))
         thread_language.setDaemon(True)
         thread_language.start()
-        print(f'操作:切换检测语言{language}')
+        print(f'Info:切换检测语言{language}')
+        self.config_save('img_language', language)
 
     def thread_language(self, language):
         self.state.mod_ready = False
@@ -317,6 +315,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.label_4.setText(f'{language}')
         self.var.img_language = language
 
+
     def change_out_language(self, language):
         self.ui.actioncn.setChecked(False)
         self.ui.actionen_2.setChecked(False)
@@ -330,7 +329,9 @@ class MainWindow(QtWidgets.QMainWindow):
         elif language == 'ko':
             self.var.word_language = 'ko'
             self.ui.actionKorean.setChecked(True)
-        print(f'修改设置:切换输出语言{self.var.word_language}')
+        print(f'Info: 输出语言{self.var.word_language}')
+        self.config_save('word_language', self.var.word_language)
+
 
     # 读取图片
     def change_img(self, s):
@@ -369,13 +370,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     self.state.task_num += 1
                     self.memory.task_name.append(os.path.basename(file_path))
                 except:
-                    messagebox.showerror(title='错误', message=f'{file_path}图片读取错误')
+                    messagebox.showerror(title='Error', message=f'{file_path}图片读取Error')
             if self.state.task_num == 0:
                 self.panel_clean()
-                print(f'未检测到图片')
+                print(f'War:未检测到图片')
             else:
                 self.panel_shownext()
-                print(f'成功导入{self.state.task_num}张图片')
+                print(f'Info:成功导入{self.state.task_num}张图片')
         else:
             filetypes = [("支持格式",
                           "*.BMP;*.DIB;*.JPEG;*.JPG;*.JPE;*.PNG;*.PBM;*.PGM;*.PPMSR;*.RAS','.TIFF','.TIF;*.EXR;*.JP2;*.WEBP")]
@@ -399,9 +400,9 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.memory.task_name = []
                 self.memory.task_name.append(f'{root}_re{ext}')
                 self.panel_shownext()
-                print(f'成功导入{self.state.task_num}张图片')
+                print(f'Info:成功导入{self.state.task_num}张图片')
             except:
-                messagebox.showerror(title='错误', message=f'{path}图片读取错误')
+                messagebox.showerror(title='Error', message=f'{path}图片读取Error')
                 self.state.task_num = 0
                 self.panel_clean()
         if self.state.task_num > 0:
@@ -425,6 +426,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 shutil.copyfile(f'{path}', f'covermaker/fonts/{os.path.basename(path)}')
             self.var.word_conf.font = f'{os.path.basename(path)}'
             self.ui.label_6.setText(f'{os.path.basename(path)}')
+        self.config_save('font', self.var.word_conf.font)
+
 
     # 清空面板
     def panel_clean(self):
@@ -473,8 +476,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.state.task_end += 1
         self.ui.img.update()
 
-        messagebox.showinfo(title='成功', message=f'图片保存完成\n{self.memory.task_out}\\{name}')
-        print(f'图片保存完成\n{name}')
+        messagebox.showInfo(title='成功', message=f'图片保存完成\n{self.memory.task_out}\\{name}')
+        print(f'Info:图片保存完成\n{name}')
 
         if self.state.task_end < self.state.task_num:
             self.panel_shownext()
@@ -495,33 +498,37 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.var.word_way == 0:
             self.var.word_way = 1
             self.ui.pushButton_2.setText('排列:垂直')
-            print('修改设置:文字垂直输出')
+            print('Info:文字垂直输出')
         elif self.var.word_way == 1:
             self.var.word_way = 2
             self.ui.pushButton_2.setText('排列:横向')
-            print('修改设置:文字横向输出')
+            print('Info:文字横向输出')
         else:
             self.var.word_way = 0
             self.ui.pushButton_2.setText('排列:自动')
-            print('修改设置:自动判断文字输出方向')
+            print('Info:自动判断文字输出方向')
+        self.config_save('word_way', self.var.word_way)
 
     # 文字定位模式
     def change_word_mod(self):
         if self.var.word_mod == 'auto':
             self.var.word_mod = 'Handmade'
-            print('修改设置:文字定位模式:手动')
+            print('Info:文字定位模式:手动')
             self.ui.pushButton_13.setText('定位:手动')
         else:
             self.var.word_mod = 'auto'
-            print('修改设置:文字定位模式:自动')
+            print('Info:文字定位模式:自动')
             self.ui.pushButton_13.setText('定位:自动')
+        self.config_save('word_mod', self.var.word_mod)
 
     # 输出文字颜色
     def change_word_colour(self):
         r = colorchooser.askcolor(title='文字颜色')
         self.var.word_conf.color = r[1]
         self.ui.label_12.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:9px;')
-        print(f'修改设置:文字输出颜色{r[1]}')
+        print(f'Info:文字输出颜色{r[1]}')
+        self.config_save('color', r[1])
+
 
     # 字距设置
     def new_character_style_window(self):
@@ -531,34 +538,38 @@ class MainWindow(QtWidgets.QMainWindow):
         Window.exec()
         if Window.re[0]:
             self.var.word_conf.letter_spacing_factor = float(Window.ui.lineEdit.text())
-            print(f'修改设置:字距{self.var.word_conf.letter_spacing_factor}')
+            print(f'Info:字距{self.var.word_conf.letter_spacing_factor}')
             self.var.word_conf.line_spacing_factor = float(Window.ui.lineEdit_2.text())
-            print(f'修改设置:行距{self.var.word_conf.line_spacing_factor}')
+            print(f'Info:行距{self.var.word_conf.line_spacing_factor}')
         Window.destroy()
+        self.config_save('line_spacing_factor', self.var.word_conf.line_spacing_factor)
+        self.config_save('letter_spacing_factor', self.var.word_conf.letter_spacing_factor)
+
 
     # 图像修复开关
     def change_img_re(self):
         if self.var.img_re_bool:
             self.var.img_re_bool = False
             self.ui.pushButton_8.setText('停用')
-            print('修改设置:图像修复关闭')
-            print('当前图像修复模式:背景抹白')
+            print('Info:图像修复关闭')
+            print(' 图像修复模式:背景抹白')
         else:
             self.var.img_re_bool = True
             self.ui.pushButton_8.setText('启用')
-            print('修改设置:图像修复打开')
+            print('Info:图像修复打开')
             if self.var.img_re_mod == 1:
-                print('当前图像修复模式:标准文字修复')
+                print(' 图像修复模式:标准文字修复')
             elif self.var.img_re_mod == 2:
-                print('当前图像修复模式:标准文字修复膨胀1')
+                print(' 图像修复模式:标准文字修复膨胀1')
             elif self.var.img_re_mod == 3:
-                print('当前图像修复模式:标准文字修复膨胀2')
+                print(' 图像修复模式:标准文字修复膨胀2')
             elif self.var.img_re_mod == 4:
-                print('当前图像修复模式:增强文字修复')
+                print(' 图像修复模式:增强文字修复')
             elif self.var.img_re_mod == 5:
-                print('当前图像修复模式:增强文字修复膨胀1')
+                print(' 图像修复模式:增强文字修复膨胀1')
             elif self.var.img_re_mod == 6:
-                print('当前图像修复模式:增强文字修复膨胀2')
+                print(' 图像修复模式:增强文字修复膨胀2')
+        self.config_save('img_re_bool', self.var.img_re_bool)
 
     # 图像修复模式
     def change_img_mod(self):
@@ -567,18 +578,20 @@ class MainWindow(QtWidgets.QMainWindow):
         else:
             self.var.img_re_mod += 1
         if self.var.img_re_mod == 1:
-            print('当前图像修复模式:标准文字修复')
+            print('Info:图像修复模式:标准文字修复')
         elif self.var.img_re_mod == 2:
-            print('当前图像修复模式:标准文字修复膨胀1')
+            print('Info:图像修复模式:标准文字修复膨胀1')
         elif self.var.img_re_mod == 3:
-            print('当前图像修复模式:标准文字修复膨胀2')
+            print('Info:图像修复模式:标准文字修复膨胀2')
         elif self.var.img_re_mod == 4:
-            print('当前图像修复模式:增强文字修复')
+            print('Info:图像修复模式:增强文字修复')
         elif self.var.img_re_mod == 5:
-            print('当前图像修复模式:增强文字修复膨胀1')
+            print('Info:图像修复模式:增强文字修复膨胀1')
         elif self.var.img_re_mod == 6:
-            print('当前图像修复模式:增强文字修复膨胀2')
+            print('Info:图像修复模式:增强文字修复膨胀2')
         self.memory.img_repair = None
+        self.config_save('img_re_mod', self.var.img_re_mod)
+
 
     def doit(self):
         if self.state.action_running:
@@ -599,7 +612,7 @@ class MainWindow(QtWidgets.QMainWindow):
             white = np.zeros([pos[3], pos[2], 3], dtype=np.uint8) + 255
             self.memory.img_show[pos[1]:pos[1] + pos[3], pos[0]:pos[0] + pos[2]] = white
 
-        print('图像修复完成')
+        print('Info:图像修复完成')
         # print(pos)
         # 添加文字
         text = self.ui.textEdit_2.toPlainText()
@@ -607,12 +620,12 @@ class MainWindow(QtWidgets.QMainWindow):
             img = self.memory.img_show.copy()
 
             pos = self.memory.textline_box[0]
-            if pos is None: print('错误:box错误')
+            if pos is None: print('Error:boxError')
             # elif self.state.img_half: pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
             if self.var.word_way == 1 or self.var.word_language == 'en' or self.var.word_language == 'ko':
                 if self.var.word_way == 2:
-                    print('当前语言不支持竖排文字')
+                    print('War:当前语言不支持竖排文字')
                 self.var.word_conf.dir = 'v'
             elif self.var.word_way == 0:
                 if pos[3] * 2 > pos[2]:
@@ -627,7 +640,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
             self.memory.img_show = img.copy()
         else:
-            print('未输入文字')
+            print('War:未输入文字')
         self.show_img()
         del (self.memory.textline_box[0])
 
@@ -642,7 +655,7 @@ class MainWindow(QtWidgets.QMainWindow):
             result = self.memory.model(self.memory.img_show[box[1]:box[3] + box[1], box[0]:box[2] + box[0]])
             self.ui.textEdit.setText(result)
             if result.replace(" ", "") == '':
-                print('文字识别异常,请手动输入')
+                print('War:文字识别异常,请手动输入')
                 self.ui.textEdit_2.setText('')
             else:
                 self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
@@ -653,14 +666,14 @@ class MainWindow(QtWidgets.QMainWindow):
             img = self.memory.img_show.copy()
 
             pos = self.memory.textline_box[0]
-            if pos is None: print('错误:box错误')
+            if pos is None: print('Error:boxError')
             # elif self.state.img_half:
             #     pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
 
             if self.var.word_way == 1 or self.var.word_language == 'en' or self.var.word_language == 'ko':
                 if self.var.word_way == 2:
-                    print('当前语言不支持竖排文字')
+                    print('War:当前语言不支持竖排文字')
                 self.var.word_conf.dir = 'v'
             elif self.var.word_way == 0:
                 if pos[3] * 2 > pos[2]:
@@ -675,7 +688,7 @@ class MainWindow(QtWidgets.QMainWindow):
             # 显示图像
             self.show_img()
         else:
-            print('未输入文字')
+            print('War:未输入文字')
         self.ui.textEdit.setText('')
         self.ui.textEdit_2.setText('')
         self.state.text_running = self.state.action_running = False
@@ -693,12 +706,12 @@ class MainWindow(QtWidgets.QMainWindow):
     # 翻译选中内容
     def translation_img(self):
         if not self.state.mod_ready:
-            print('错误:模型未正确加载')
+            print('Error:模型未正确加载')
             return
         if not self.state.action_running:
             pos = self.get_pos()
             if pos is None:
-                print('错误:box错误')
+                print('Error:boxError')
                 return
             textline_box = []
             self.memory.textline_box = []
@@ -711,19 +724,19 @@ class MainWindow(QtWidgets.QMainWindow):
             if len(textline_box) == 0:
                 self.memory.textline_box.append(pos)
                 box = pos
-                print('文字位置检测异常\n推荐使用加强版图像修复(或抹白)')
+                print('War:文字位置检测异常\n推荐使用加强版图像修复(或抹白)')
             elif len(textline_box) == 1:
                 box = pos
                 if self.var.word_mod == 'Handmade':
                     self.memory.textline_box.append(pos)
                 else:
                     self.memory.textline_box.append(textline_box[0])
-                print('检测成功,请确认翻译')
+                print('Info:检测成功,请确认翻译')
             elif len(textline_box) > 1:
                 for i in textline_box:
                     self.memory.textline_box.append(i)
                 box = textline_box[0]
-                print('当前区域检测有多段文字\n文字输出排列强制自动\n请多次确认翻译')
+                print('Info:当前区域检测有多段文字\n文字输出排列强制自动\n请多次确认翻译')
 
             result = self.memory.model(self.memory.img_show[box[1]:box[3] + box[1], box[0]:box[2] + box[0]])
             if self.var.img_language == 'ja':
@@ -735,7 +748,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 result = str
                 self.ui.textEdit.setText(result)
             if result.replace(" ", "") == '':
-                print('文字识别异常,请手动输入')
+                print('Info:文字识别异常,请手动输入')
                 self.ui.textEdit_2.setText('')
             else:
                 self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
@@ -744,7 +757,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_5.setEnabled(True)
             self.ui.pushButton_15.setEnabled(True)
         else:
-            print('任务队列未完成,右下角继续')
+            print('War:任务队列未完成,右下角继续')
 
     def text_add(self):
         if not self.state.action_running:
@@ -760,7 +773,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_15.setEnabled(True)
             self.state.text_running = True
         else:
-            print('任务队列未完成,右下角继续')
+            print('War:任务队列未完成,右下角继续')
 
     def text_clean(self):
         if not self.state.action_running:
@@ -773,7 +786,7 @@ class MainWindow(QtWidgets.QMainWindow):
                                [pos[0], pos[1], pos[0] + pos[2], pos[1] + pos[3]]) > 0.6:
                     text += 1
             if text == 0:
-                print('当前区域文字检测异常\n推荐使用加强版图像修复(或抹白)')
+                print('War:当前区域文字检测异常\n推荐使用加强版图像修复(或抹白)')
             # 图像修复
             if self.var.img_re_bool:
                 if self.memory.img_repair is None:
@@ -783,11 +796,11 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
                 white = np.zeros([pos[3], pos[2], 3], dtype=np.uint8) + 255
                 self.memory.img_show[pos[1]:pos[1] + pos[3], pos[0]:pos[0] + pos[2]] = white
-            print('图像修复完成')
+            print('Info:图像修复完成')
             # 显示图像
             self.show_img()
         else:
-            print('任务队列未完成,右下角继续')
+            print('War:任务队列未完成,右下角继续')
 
     def auto_text_clean(self):
         if not self.state.action_running:
@@ -796,17 +809,17 @@ class MainWindow(QtWidgets.QMainWindow):
             if self.memory.img_repair is None:
                 self.img_repair()
             self.memory.img_show = self.memory.img_repair.copy()
-            print('图像修复完成\n部分区域需要自行抹白')
+            print('Info:图像修复完成\n部分区域需要自行抹白')
             # 显示图像
             self.show_img()
         else:
-            print('任务队列未完成,右下角继续')
+            print('War:任务队列未完成,右下角继续')
 
     # 提取box
     def get_pos(self):
         pos = self.memory.range_choice = self.ui.img.img_pos
         if pos == [0, 0, 0, 0] or pos[2] < 2 or pos[3] < 2:
-            print('错误:未选择输入区域')
+            print('Error:未选择输入区域')
             return None
         if self.state.img_half:
             pos = self.memory.range_choice = [pos[0] * 2, pos[1] * 2, pos[2] * 2, pos[3] * 2]
@@ -832,11 +845,11 @@ class MainWindow(QtWidgets.QMainWindow):
             self.memory.img_show = self.memory.action_save_img[self.memory.action_save_num - 1].copy()
             self.memory.action_save_num -= 1
             self.show_img()
-            print('撤销完成')
+            print('Info:撤销完成')
             if self.memory.action_save_num == 0:
                 self.ui.pushButton_7.setEnabled(False)
         else:
-            print('任务队列未完成,右下角继续')
+            print('War:任务队列未完成,右下角继续')
 
     # 保存
     def action_save(self):
@@ -850,7 +863,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # 图像修复,送入网络模型
     def img_repair(self):
-        print('检测中,请稍后')
+        print('Info:检测中,请稍后')
         if self.var.img_re_mod < 4:
             mark = self.memory.img_mark
         else:
@@ -862,6 +875,57 @@ class MainWindow(QtWidgets.QMainWindow):
         img1 = self.memory.img_show.copy()
         img1[mark > 0] = 255
         self.memory.img_repair = Inpainting(img1, mark)
+
+    # 参数保存
+    def config_save(self,parameter,value):
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        config.set('var', f'{parameter}', f'{value}')
+        with open('./config.ini', 'w+') as config_file:
+            config.write(config_file)
+
+
+    # 参数读取
+    def config_read(self):
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        self.var.img_language = config.get('var','img_language')
+        self.change_mod(self.var.img_language)
+
+        self.var.word_language = config.get('var', 'word_language')
+        self.change_out_language(self.var.word_language)
+
+        self.var.word_mod = config.get('var', 'word_mod')
+        if self.var.word_mod == 'auto':
+            self.ui.pushButton_13.setText('定位:自动')
+        else:
+            self.ui.pushButton_13.setText('定位:手动')
+
+        self.var.word_way = config.getint('var', 'word_way')
+        if self.var.word_way == 0:
+            self.ui.pushButton_2.setText('排列:自动')
+        elif self.var.word_way == 1:
+            self.var.word_way = 2
+            self.ui.pushButton_2.setText('排列:横向')
+        else:
+            self.ui.pushButton_2.setText('排列:垂直')
+
+        self.var.img_re_bool = config.getboolean('var', 'img_re_bool')
+        if self.var.img_re_bool:
+            self.ui.pushButton_8.setText('启用')
+        else:
+            self.ui.pushButton_8.setText('停用')
+
+        self.var.img_re_mod = config.getint('var', 'img_re_mod')
+
+        self.var.word_conf.font = config.get('var', 'font')
+        self.ui.label_6.setText(self.var.word_conf.font)
+
+        self.var.word_conf.color = config.get('var', 'color')
+        self.ui.label_12.setStyleSheet(f'background-color: {self.var.word_conf.color};border-width:0px;border-radius:9px;')
+
+        self.var.word_conf.line_spacing_factor = config.getfloat('var', 'line_spacing_factor')
+        self.var.word_conf.letter_spacing_factor = config.getfloat('var', 'letter_spacing_factor')
 
 
 # 字距设置窗口

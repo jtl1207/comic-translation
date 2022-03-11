@@ -22,17 +22,21 @@ def _get_font(font_name, font_size):
 
 
 # 用于提取单词和数字
-_RE_EN_NUM_WORDS = re.compile(r"\w+|[!?#$%.,&|\"\'-_]+", re.ASCII)
+_RE_V_WORDS = re.compile(r"\w+|[!?|\"\'-]+", re.ASCII)
+_RE_H_WORDS = re.compile(r"\+", re.ASCII)
 
-
-def _splite_text_to_words(text):
+def _splite_text_to_words(text,section):
     '''将文本切分成单词。非宽字符将是单个的字，英文和数字将是词组
 
     Returns:
         list : 例如输入 '豆瓣2020 hello' 将返回 ['豆', '瓣', '2020', ' ', 'hello']
     '''
-    ascii_words_range = ((x.start(), x.end())
-                         for x in _RE_EN_NUM_WORDS.finditer(text))
+    if section.dir == 'v':
+        ascii_words_range = ((x.start(), x.end())
+                             for x in _RE_V_WORDS.finditer(text))
+    else:
+        ascii_words_range = ((x.start(), x.end())
+                             for x in _RE_H_WORDS.finditer(text))
     i = 0
     ret = []
     for r in ascii_words_range:
@@ -109,7 +113,7 @@ class Line(object):
 
     def get_display_width(self):
         '''返回当前行所有字在排版后的宽度。包含了字符间距'''
-        ls = (self._letter_count - 1) * self._letter_spacing
+        ls = (self._letter_count - 0) * self._letter_spacing
         return int(ls + self._words_width)
 
     def __str__(self):
@@ -211,7 +215,6 @@ class Layout(object):
 
 def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
     '''将text按照行分割后，返回每一行的数据
-
     Returns:
         list: [Line ...] 如果列表为空，表示不能按照指定配置在文本框内完成排版
     '''
@@ -224,7 +227,7 @@ def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
         line.append(word)
         lw = line.get_display_width()
         # print('\tline width', lw, line, i, prei)
-        if lw > boxw:
+        if lw > boxw - font_size:
             # 超框了直接返回
             if i == prei:
                 return []
@@ -263,7 +266,7 @@ def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
 def _build_max_font_lines(text, section):
     '''在文本框内寻找能最大利用文本框显示区域字号，并执行分行操作'''
     # 1. 把文本块中所有的单词和数字找出来，保证他们不会被分割。这样符合排版规则
-    words = _splite_text_to_words(text)
+    words = _splite_text_to_words(text,section)
     # 3. 求字号范围
     boxw, boxh = section.box.w, section.box.h
     if section.dir == 'v':
