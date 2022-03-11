@@ -6,16 +6,14 @@
 ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中文容易出现问题，希望更多的小众漫画能够得到汉化。
 ## 安装
 开发者直接git  
-注意paddle，pytorch，tensorflow2 需要官网下载，任意版本，现在是cuda10.2的。  
-注意30系显卡不支持cuda10.2，但是11.1支持的显卡更少。
+注意paddle，pytorch，tensorflow2 需要官网下载，任意版。    
+注意30系显卡不支持cuda10.2。
 
-普通用户这里[下载](https://github.com/jtl1207/comic-translation/releases "下载")  
-注意30系显卡不支持cuda10.2，如果需要更高版本请在问题里留言，我会更新版本。([这里查看驱动要求](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html "docs.nvidia.com"))  
-显卡驱动版本过低将导致程序卡住，暂时不支持A卡。
+普通用户这里[下载](https://github.com/jtl1207/comic-translation/releases "下载")   
+显卡驱动版本过低将导致程序卡住，暂时不支持A卡。  
 为了更好的显示错误原因，整合包保留了控制台。  
-第一次打开会安装虚拟环境，需要数分钟，安装结束有报错没有关系(4个)，所有文件已经提前放好了。  
-整合包包含了整个开发环境，里面有很多库其实是可以不用的所以才这么大:(  
-确定正常使用后可以删除.\opt\packages(1.2Gb)
+第一次打开会安装虚拟环境，需要数分钟，安装结束有报错没有关系(4个)。  
+整合包确定正常使用后可以删除.\opt\packages文件夹(1.2Gb)
 
 ## 使用方法
 1.提前排好图片顺序与名称  
