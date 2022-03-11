@@ -477,7 +477,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.state.task_end += 1
         self.ui.img.update()
 
-        messagebox.showInfo(title='成功', message=f'图片保存完成\n{self.memory.task_out}\\{name}')
+        messagebox.showinfo(title='成功', message=f'图片保存完成\n{self.memory.task_out}\\{name}')
         print(f'Info:图片保存完成\n{name}')
 
         if self.state.task_end < self.state.task_num:
@@ -768,7 +768,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.memory.textline_box = [pos]
 
             self.ui.textEdit.setText('下方输入文字')
-            self.ui.textEdit_2.setText('')
+            # self.ui.textEdit_2.setText('')
             self.state.action_running = True
             self.ui.pushButton_5.setEnabled(True)
             self.ui.pushButton_15.setEnabled(True)
@@ -906,10 +906,9 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.var.word_way == 0:
             self.ui.pushButton_2.setText('排列:自动')
         elif self.var.word_way == 1:
-            self.var.word_way = 2
-            self.ui.pushButton_2.setText('排列:横向')
-        else:
             self.ui.pushButton_2.setText('排列:垂直')
+        else:
+            self.ui.pushButton_2.setText('排列:横向')
 
         self.var.img_re_bool = config.getboolean('var', 'img_re_bool')
         if self.var.img_re_bool:
