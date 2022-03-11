@@ -6,7 +6,7 @@
 ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中文容易出现问题，希望更多的小众漫画能够得到汉化。
 ## 安装
 开发者直接git  
-注意paddle，pytorch，tensorflow2 需要官网下载，任意版。    
+注意paddle，pytorch，tensorflow2 需要官网下载，任意版本。    
 注意30系显卡不支持cuda10.2。
 
 普通用户这里[下载](https://github.com/jtl1207/comic-translation/releases "下载")   
