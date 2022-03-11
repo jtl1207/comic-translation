@@ -1,3 +1,5 @@
+bce-python-sdk
+unidic-lite==1.0.8
 paddlepaddle-gpu==2.2.2
 jaconv==0.3
 torchvision==0.10.1
@@ -12,8 +14,6 @@ imgaug==0.4.0
 python-Levenshtein-wheels==0.13.2
 opencv-python==4.5.4.60
 fugashi==1.1.2
-unidic-lite==1.0.8
-bce-python-sdk
 
 # ----------------------Ignored dependent packages---------------------
 #altgraph==0.17.2
