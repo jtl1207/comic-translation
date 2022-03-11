@@ -32,7 +32,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 有显卡可显著加快图像处理速度(CUDA)  
 cpu会非常慢  
 需要驱动版本>=472.50  
-整合包自带CUDA10.2与cudnn不需要额外安装  
+整合包自带CUDA与cudnn不需要额外安装  
 
 字体下载地址:  
 [www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
