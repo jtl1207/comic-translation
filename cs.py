@@ -1,22 +1,22 @@
+from PIL import Image, ImageDraw, ImageFont
+
+# create an image
+out = Image.new("RGB", (500, 300), (255, 255, 255))
+
+# get a drawing context
+d = ImageDraw.Draw(out)
+
+# draw multiline text
+d.text(xy=(20, 20),
+       text="你那还好吗?!,",
+       direction='ttb',
+       font=ImageFont.truetype("covermaker/fonts/华康翩翩体简-粗体.otf", 20),
+       fill=(0, 0, 0),
+       anchor='mt',
+       spacing=30,
+       align='center',
+       stroke_width=2,
+       stroke_fill="#0f0")
 
 
-import re
-
-text = '啊啊啊 你\n好骚EHVEL HELLO啊!?66'
-
-_RE_V_WORDS = re.compile(r"\w+|[!?|\"\'-]+", re.ASCII)
-_RE_H_WORDS = re.compile(r"\+", re.ASCII)
-ascii_words_range = ((x.start(), x.end())
-                     for x in _RE_H_WORDS.finditer(text))
-i = 0
-ret = []
-for r in ascii_words_range:
-    while i < r[0]:
-        ret.append(text[i])
-        i += 1
-    ret.append(text[r[0]:r[1]])
-    i = r[1]
-while i < len(text):
-    ret.append(text[i])
-    i += 1
-print(ret)
+out.show()

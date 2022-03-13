@@ -42,7 +42,7 @@ class var:
     img_language = 'ja'  # 原始语言
     word_language = 'zh-CN'  # 翻译语言
     word_way = 0  # 文字输出方向
-    word_conf = conf.Section()  # 文字输出参数
+    word_conf = conf.Section()  # 文字渲染参数
     word_mod = 'auto'  # 文字定位模式
     img_re_bool = True  # 图像修复开关
     img_re_mod = 1  # 图像修复模式
@@ -79,6 +79,7 @@ class state():
     img_half = False  # 当前图片缩小一半
     task_num = 0  # 任务数量
     task_end = 0  # 完成数量
+    ttsing = False  # 语音输出锁(未使用多线程)
 
 
 # 主程序
@@ -154,7 +155,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui.pushButton_2.clicked.connect(lambda event: self.change_word_way())
         self.ui.pushButton_13.clicked.connect(lambda event: self.change_word_mod())
-        self.ui.pushButton_3.clicked.connect(lambda event: self.change_word_colour())
         self.ui.pushButton_16.clicked.connect(lambda event: self.new_character_style_window())
         self.ui.pushButton_8.clicked.connect(lambda event: self.change_img_re())
         self.ui.pushButton_11.clicked.connect(lambda event: self.change_img_mod())
@@ -167,6 +167,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_7.clicked.connect(lambda event: self.cancel())
         self.ui.pushButton_6.clicked.connect(lambda event: self.save())
 
+        self.ui.pushButton.clicked.connect(lambda event: self.tts())
         self.ui.pushButton_5.clicked.connect(lambda event: self.doit())
         self.ui.pushButton_15.clicked.connect(lambda event: self.closeit())
 
@@ -176,7 +177,6 @@ class MainWindow(QtWidgets.QMainWindow):
         thread_cuda.setDaemon(True)
         thread_cuda.start()
         self.config_read()
-
 
     # 检测cuda状态
     def thred_cuda(self):
@@ -316,7 +316,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.label_4.setText(f'{language}')
         self.var.img_language = language
 
-
     def change_out_language(self, language):
         self.ui.actioncn.setChecked(False)
         self.ui.actionen_2.setChecked(False)
@@ -332,7 +331,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.actionKorean.setChecked(True)
         print(f'Info: 输出语言{self.var.word_language}')
         self.config_save('word_language', self.var.word_language)
-
 
     # 读取图片
     def change_img(self, s):
@@ -413,8 +411,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_12.setEnabled(True)
             self.ui.pushButton_9.setEnabled(True)
             self.ui.pushButton_6.setEnabled(True)
-            self.ui.pushButton_5.setEnabled(True)
-            self.ui.pushButton_15.setEnabled(True)
 
     # 读取字体
     def change_font(self):
@@ -428,7 +424,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.var.word_conf.font = f'{os.path.basename(path)}'
             self.ui.label_6.setText(f'{os.path.basename(path)}')
         self.config_save('font', self.var.word_conf.font)
-
 
     # 清空面板
     def panel_clean(self):
@@ -478,6 +473,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.img.update()
 
         messagebox.showinfo(title='成功', message=f'图片保存完成\n{self.memory.task_out}\\{name}')
+        self.ui.textEdit_3.setText('')
         print(f'Info:图片保存完成\n{name}')
 
         if self.state.task_end < self.state.task_num:
@@ -493,21 +489,18 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_6.setEnabled(False)
             self.ui.pushButton_5.setEnabled(False)
             self.ui.pushButton_15.setEnabled(False)
+            self.ui.pushButton.setEnabled(False)
 
     # 输出文字方向
     def change_word_way(self):
-        if self.var.word_way == 0:
-            self.var.word_way = 1
-            self.ui.pushButton_2.setText('排列:垂直')
-            print('Info:文字垂直输出')
-        elif self.var.word_way == 1:
+        if self.var.word_way == 1:
             self.var.word_way = 2
             self.ui.pushButton_2.setText('排列:横向')
             print('Info:文字横向输出')
         else:
-            self.var.word_way = 0
-            self.ui.pushButton_2.setText('排列:自动')
-            print('Info:自动判断文字输出方向')
+            self.var.word_way = 1
+            self.ui.pushButton_2.setText('排列:垂直')
+            print('Info:文字垂直输出')
         self.config_save('word_way', self.var.word_way)
 
     # 文字定位模式
@@ -522,30 +515,32 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_13.setText('定位:自动')
         self.config_save('word_mod', self.var.word_mod)
 
-    # 输出文字颜色
-    def change_word_colour(self):
-        r = colorchooser.askcolor(title='文字颜色')
-        self.var.word_conf.color = r[1]
-        self.ui.label_12.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:9px;')
-        print(f'Info:文字输出颜色{r[1]}')
-        self.config_save('color', r[1])
-
-
     # 字距设置
     def new_character_style_window(self):
         Window = CharacterStyle()
+        Window.ui.pushButton_1.setStyleSheet(
+            f'background-color: {self.var.word_conf.color};border-width:0px;border-radius:11px;')
+        Window.ui.lineEdit_3.setText(str(self.var.word_conf.stroke_width))
+        Window.ui.pushButton_3.setStyleSheet(
+            f'background-color: {self.var.word_conf.stroke_fill};border-width:0px;border-radius:11px;')
         Window.ui.lineEdit.setText(str(self.var.word_conf.letter_spacing_factor))
         Window.ui.lineEdit_2.setText(str(self.var.word_conf.line_spacing_factor))
+        Window.stroke_fill = self.var.word_conf.stroke_fill
+        Window.color = self.var.word_conf.color
         Window.exec()
         if Window.re[0]:
-            self.var.word_conf.letter_spacing_factor = float(Window.ui.lineEdit.text())
-            print(f'Info:字距{self.var.word_conf.letter_spacing_factor}')
-            self.var.word_conf.line_spacing_factor = float(Window.ui.lineEdit_2.text())
-            print(f'Info:行距{self.var.word_conf.line_spacing_factor}')
+            self.var.word_conf.letter_spacing_factor = Window.re[1]
+            self.var.word_conf.line_spacing_factor = Window.re[2]
+            self.var.word_conf.color = Window.re[3]
+            self.var.word_conf.stroke_width = Window.re[4]
+            self.var.word_conf.stroke_fill = Window.re[5]
+            print(f'Info:字距{Window.re[1]}\n文字颜色{Window.re[3]}\n行距{Window.re[2]}\n阴影颜色{Window.re[5]}\n阴影宽度{Window.re[4]}')
+            self.config_save('line_spacing_factor', self.var.word_conf.line_spacing_factor)
+            self.config_save('letter_spacing_factor', self.var.word_conf.letter_spacing_factor)
+            self.config_save('stroke_fill', self.var.word_conf.stroke_fill)
+            self.config_save('color', self.var.word_conf.color)
+            self.config_save('stroke_width', self.var.word_conf.stroke_width)
         Window.destroy()
-        self.config_save('line_spacing_factor', self.var.word_conf.line_spacing_factor)
-        self.config_save('letter_spacing_factor', self.var.word_conf.letter_spacing_factor)
-
 
     # 图像修复开关
     def change_img_re(self):
@@ -593,7 +588,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.memory.img_repair = None
         self.config_save('img_re_mod', self.var.img_re_mod)
 
-
     def doit(self):
         if self.state.action_running:
             self.action_save()
@@ -624,17 +618,12 @@ class MainWindow(QtWidgets.QMainWindow):
             if pos is None: print('Error:boxError')
             # elif self.state.img_half: pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
-            if self.var.word_way == 1 or self.var.word_language == 'en' or self.var.word_language == 'ko':
-                if self.var.word_way == 2:
+            if self.var.word_way == 2 or self.var.word_language == 'en' or self.var.word_language == 'ko':
+                if self.var.word_way == 1:
                     print('War:当前语言不支持竖排文字')
-                self.var.word_conf.dir = 'v'
-            elif self.var.word_way == 0:
-                if pos[3] * 2 > pos[2]:
-                    self.var.word_conf.dir = 'v'
-                else:
-                    self.var.word_conf.dir = 'h'
-            elif self.var.word_way == 2:
                 self.var.word_conf.dir = 'h'
+            else:
+                self.var.word_conf.dir = 'v'
 
             img = render.Render(img)
             img = img.draw(text, self.var.word_conf)
@@ -648,6 +637,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if len(self.memory.textline_box) == 0:
             self.state.action_running = False
             self.ui.pushButton_5.setEnabled(False)
+            self.ui.pushButton.setEnabled(False)
             self.ui.pushButton_15.setEnabled(False)
             self.ui.textEdit.setText('')
             self.ui.textEdit_2.setText('')
@@ -672,17 +662,12 @@ class MainWindow(QtWidgets.QMainWindow):
             #     pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
 
-            if self.var.word_way == 1 or self.var.word_language == 'en' or self.var.word_language == 'ko':
-                if self.var.word_way == 2:
+            if self.var.word_way == 2 or self.var.word_language == 'en' or self.var.word_language == 'ko':
+                if self.var.word_way == 1:
                     print('War:当前语言不支持竖排文字')
-                self.var.word_conf.dir = 'v'
-            elif self.var.word_way == 0:
-                if pos[3] * 2 > pos[2]:
-                    self.var.word_conf.dir = 'v'
-                else:
-                    self.var.word_conf.dir = 'h'
-            elif self.var.word_way == 2:
                 self.var.word_conf.dir = 'h'
+            else:
+                self.var.word_conf.dir = 'v'
             img = render.Render(img)
             img = img.draw(text, self.var.word_conf)
             self.memory.img_show = img
@@ -695,6 +680,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.state.text_running = self.state.action_running = False
         self.ui.pushButton_5.setEnabled(False)
         self.ui.pushButton_15.setEnabled(False)
+        self.ui.pushButton.setEnabled(False)
 
     def closeit(self):
         self.state.action_running = False
@@ -703,6 +689,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.state.action_running = False
         self.ui.pushButton_5.setEnabled(False)
         self.ui.pushButton_15.setEnabled(False)
+        self.ui.pushButton.setEnabled(False)
 
     # 翻译选中内容
     def translation_img(self):
@@ -757,6 +744,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.state.action_running = True
             self.ui.pushButton_5.setEnabled(True)
             self.ui.pushButton_15.setEnabled(True)
+            self.ui.pushButton.setEnabled(True)
         else:
             print('War:任务队列未完成,右下角继续')
 
@@ -765,7 +753,7 @@ class MainWindow(QtWidgets.QMainWindow):
             pos = self.get_pos()
             if pos is None: return
             self.action_save()
-            self.memory.textline_box = [pos]
+            self.memory.textline_box.append(pos)
 
             self.ui.textEdit.setText('下方输入文字')
             # self.ui.textEdit_2.setText('')
@@ -877,20 +865,33 @@ class MainWindow(QtWidgets.QMainWindow):
         img1[mark > 0] = 255
         self.memory.img_repair = Inpainting(img1, mark)
 
+    # 朗读
+    def tts(self):
+        from gtts import gTTS
+        import pyglet
+        if self.ui.textEdit.toPlainText().isspace() != True:
+            tts = gTTS(text=self.ui.textEdit.toPlainText(), lang=self.var.img_language)
+            filename = 'temp.mp3'
+            tts.save(filename)
+            music = pyglet.media.load(filename, streaming=False)
+            music.play()
+            time.sleep(music.duration)
+            os.remove(filename)
+
+
     # 参数保存
-    def config_save(self,parameter,value):
+    def config_save(self, parameter, value):
         config = configparser.ConfigParser()
         config.read('config.ini')
         config.set('var', f'{parameter}', f'{value}')
         with open('./config.ini', 'w+') as config_file:
             config.write(config_file)
 
-
     # 参数读取
     def config_read(self):
         config = configparser.ConfigParser()
         config.read('config.ini')
-        self.var.img_language = config.get('var','img_language')
+        self.var.img_language = config.get('var', 'img_language')
         self.change_mod(self.var.img_language)
 
         self.var.word_language = config.get('var', 'word_language')
@@ -903,9 +904,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_13.setText('定位:手动')
 
         self.var.word_way = config.getint('var', 'word_way')
-        if self.var.word_way == 0:
-            self.ui.pushButton_2.setText('排列:自动')
-        elif self.var.word_way == 1:
+        if self.var.word_way == 1:
             self.ui.pushButton_2.setText('排列:垂直')
         else:
             self.ui.pushButton_2.setText('排列:横向')
@@ -922,16 +921,17 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.label_6.setText(self.var.word_conf.font)
 
         self.var.word_conf.color = config.get('var', 'color')
-        self.ui.label_12.setStyleSheet(f'background-color: {self.var.word_conf.color};border-width:0px;border-radius:9px;')
-
+        self.var.word_conf.stroke_width = config.getint('var', 'stroke_width')
+        self.var.word_conf.stroke_fill = config.get('var', 'stroke_fill')
         self.var.word_conf.line_spacing_factor = config.getfloat('var', 'line_spacing_factor')
         self.var.word_conf.letter_spacing_factor = config.getfloat('var', 'letter_spacing_factor')
-
 
 # 字距设置窗口
 class CharacterStyle(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
+        self.color = ''
+        self.stroke_fill = ''
         self.ui = CharacterStyleDialog()
         self.setWindowIcon(QtGui.QIcon('img.png'))
         self.setWindowFlags(QtCore.Qt.WindowType.WindowCloseButtonHint)
@@ -939,18 +939,32 @@ class CharacterStyle(QtWidgets.QDialog):
 
         self.ui.lineEdit.setValidator(QtGui.QDoubleValidator())
         self.ui.lineEdit_2.setValidator(QtGui.QDoubleValidator())
+        self.ui.lineEdit_2.setValidator(QtGui.QIntValidator())
 
         self.ui.pushButton.clicked.connect(self.ok)
+        self.ui.pushButton_1.clicked.connect(self.change_word_colour)
         self.ui.pushButton_2.clicked.connect(self.close)
-        self.re = [False, 0, 0]
+        self.ui.pushButton_3.clicked.connect(self.change_shadow_colour)
+        self.re = [False, 0, 0, '', 0, '']
 
     def ok(self):
-        self.re = [True, float(self.ui.lineEdit.text()), float(self.ui.lineEdit_2.text())]
+        self.re = [True, float(self.ui.lineEdit.text()), float(self.ui.lineEdit_2.text()), self.color,
+                   int(self.ui.lineEdit_3.text()), self.stroke_fill]
         self.accept()
 
     def close(self):
-        self.re = [False, 0, 0]
+        self.re = [False, 0, 0, '', 0, '']
         self.reject()
+
+    def change_word_colour(self):
+        r = colorchooser.askcolor(title='文字颜色')
+        self.color = r[1]
+        self.ui.pushButton_1.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:11px;')
+
+    def change_shadow_colour(self):
+        r = colorchooser.askcolor(title='阴影颜色')
+        self.stroke_fill = r[1]
+        self.ui.pushButton_3.setStyleSheet(f'background-color: {r[1]};border-width:0px;border-radius:11px;')
 
 
 if __name__ == '__main__':

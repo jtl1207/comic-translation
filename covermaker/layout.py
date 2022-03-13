@@ -330,12 +330,8 @@ def layout_text(text, section) -> Layout:
         Layout: 排版好的 Layout 对象
     '''
     # 按规则执行分行
-    if section.trim:
-        lines, font, font_size, line_spacing, letter_spacing = _build_trimed_lines(
-            text, section)
-    else:
-        lines, font, font_size, line_spacing, letter_spacing = _build_max_font_lines(
-            text, section)
+    lines, font, font_size, line_spacing, letter_spacing = _build_max_font_lines(
+        text, section)
     # 进行布局运算
     ret = Layout(lines, font, font_size, line_spacing, letter_spacing)
     ret.update(section.box, section.dir, section.valign, section.halign)
