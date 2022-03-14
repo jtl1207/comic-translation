@@ -124,11 +124,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # 控制台输出到text
     def shelltext(self, text):
-        self.ui.textEdit_3.moveCursor(QtGui.QTextCursor.MoveOperation.End)
-        cursor = self.ui.textEdit_3.textCursor()
-        cursor.insertText(text)
-        self.ui.textEdit_3.setTextCursor(cursor)
-        self.ui.textEdit_3.ensureCursorVisible()
+        if text!='\n':
+            self.ui.textEdit_3.append(text)
+            self.ui.textEdit_3.moveCursor(QtGui.QTextCursor.MoveOperation.End)
 
     # 槽
     def uireadly(self):
