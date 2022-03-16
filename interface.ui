@@ -79,7 +79,7 @@
 有显卡可显著加快图像处理速度(CUDA)
 cpu会非常慢
 需要驱动版本&gt;=472.50
-整合包自带CUDA10.2与cudnn不需要额外安装
+整合包自带CUDA与cudnn不需要额外安装
 
 字体下载地址:
 www.hellofont.cn</string>
@@ -1308,12 +1308,15 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="action2">
    <property name="text">
-    <string>github</string>
+    <string>github(这里更新)</string>
+   </property>
+   <property name="iconText">
+    <string>github(这里更新</string>
    </property>
   </action>
   <action name="action3">
    <property name="text">
-    <string>版本1.0</string>
+    <string>版本1.1</string>
    </property>
   </action>
   <action name="actionko">

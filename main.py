@@ -5,6 +5,7 @@ import sys
 import threading
 import time
 import configparser
+import eventlet
 from tkinter import messagebox, Tk, filedialog, colorchooser
 
 import cv2
@@ -27,6 +28,8 @@ from utils import compute_iou
 # tkinter弹窗初始化
 root = Tk()
 root.withdraw()
+# 超时跳出
+eventlet.monkey_patch()
 
 
 # 重定向控制台信号
@@ -594,6 +597,7 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
                 self.do_translation()
 
+
     def do_translation(self):
         pos = self.memory.textline_box[0]
         if self.var.img_re_bool:
@@ -647,7 +651,10 @@ class MainWindow(QtWidgets.QMainWindow):
                 print('War:文字识别异常,请手动输入')
                 self.ui.textEdit_2.setText('')
             else:
-                self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
+                with eventlet.Timeout(20, False):
+                    self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
+                if self.ui.textEdit_2.toPlainText() == '':
+                    self.ui.textEdit_2.setText('翻译超时')
 
     def do_add_text(self):
         text = self.ui.textEdit_2.toPlainText()
@@ -737,7 +744,10 @@ class MainWindow(QtWidgets.QMainWindow):
                 print('Info:文字识别异常,请手动输入')
                 self.ui.textEdit_2.setText('')
             else:
-                self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
+                with eventlet.Timeout(20, False):
+                    self.ui.textEdit_2.setText(translate(result, f'{self.var.word_language}', "auto"))
+                if self.ui.textEdit_2.toPlainText() =='':
+                    self.ui.textEdit_2.setText('翻译超时')
 
             self.state.action_running = True
             self.ui.pushButton_5.setEnabled(True)
@@ -751,6 +761,7 @@ class MainWindow(QtWidgets.QMainWindow):
             pos = self.get_pos()
             if pos is None: return
             self.action_save()
+            self.memory.textline_box = []
             self.memory.textline_box.append(pos)
 
             self.ui.textEdit.setText('下方输入文字')
@@ -821,6 +832,7 @@ class MainWindow(QtWidgets.QMainWindow):
             img = cv2.resize(self.memory.img_show, (width, height))
         else:
             img = self.memory.img_show
+        cv2.imwrite('save.jpg',self.memory.img_show)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         showImage = QtGui.QImage(img.data, img.shape[1], img.shape[0], img.shape[1] * img.shape[2],
                                  QtGui.QImage.Format.Format_RGB888)
@@ -868,14 +880,16 @@ class MainWindow(QtWidgets.QMainWindow):
         from gtts import gTTS
         import pyglet
         if self.ui.textEdit.toPlainText().isspace() != True:
-            tts = gTTS(text=self.ui.textEdit.toPlainText(), lang=self.var.img_language)
-            filename = 'temp.mp3'
-            tts.save(filename)
-            music = pyglet.media.load(filename, streaming=False)
-            music.play()
-            time.sleep(music.duration)
-            os.remove(filename)
-
+            try:
+                tts = gTTS(text=self.ui.textEdit.toPlainText(), lang=self.var.img_language)
+                filename = 'temp.mp3'
+                tts.save(filename)
+                music = pyglet.media.load(filename, streaming=False)
+                music.play()
+                time.sleep(music.duration)
+                os.remove(filename)
+            except:
+                print('无可朗读文字')
 
     # 参数保存
     def config_save(self, parameter, value):
@@ -937,7 +951,7 @@ class CharacterStyle(QtWidgets.QDialog):
 
         self.ui.lineEdit.setValidator(QtGui.QDoubleValidator())
         self.ui.lineEdit_2.setValidator(QtGui.QDoubleValidator())
-        self.ui.lineEdit_2.setValidator(QtGui.QIntValidator())
+        self.ui.lineEdit_3.setValidator(QtGui.QIntValidator())
 
         self.ui.pushButton.clicked.connect(self.ok)
         self.ui.pushButton_1.clicked.connect(self.change_word_colour)

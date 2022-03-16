@@ -511,7 +511,7 @@ class Ui_MainWindow(object):
 "有显卡可显著加快图像处理速度(CUDA)\n"
 "cpu会非常慢\n"
 "需要驱动版本>=472.50\n"
-"整合包自带CUDA10.2与cudnn不需要额外安装\n"
+"整合包自带CUDA与cudnn不需要额外安装\n"
 "\n"
 "字体下载地址:\n"
 "www.hellofont.cn"))
@@ -560,8 +560,9 @@ class Ui_MainWindow(object):
         self.actionja.setText(_translate("MainWindow", "日语"))
         self.actionen.setText(_translate("MainWindow", "英语"))
         self.action1.setText(_translate("MainWindow", "博客"))
-        self.action2.setText(_translate("MainWindow", "github"))
-        self.action3.setText(_translate("MainWindow", "版本1.0"))
+        self.action2.setText(_translate("MainWindow", "github(这里更新)"))
+        self.action2.setIconText(_translate("MainWindow", "github(这里更新"))
+        self.action3.setText(_translate("MainWindow", "版本1.1"))
         self.actionko.setText(_translate("MainWindow", "韩语"))
         self.actionen2.setText(_translate("MainWindow", "英语2.0"))
         self.action1_2.setText(_translate("MainWindow", "1"))
