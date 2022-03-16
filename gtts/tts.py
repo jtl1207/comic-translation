@@ -103,7 +103,7 @@ class gTTS:
     def __init__(
             self,
             text,
-            tld='com',
+            tld='cn',
             lang='en',
             slow=False,
             lang_check=True,
@@ -338,7 +338,7 @@ class gTTSError(Exception):
         if rsp is None:
             premise = "Failed to connect"
 
-            if tts.tld != 'com':
+            if tts.tld != 'cn':
                 host = _translate_url(tld=tts.tld)
                 cause = "Host '{}' is not reachable".format(host)
 
