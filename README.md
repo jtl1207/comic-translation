@@ -16,7 +16,8 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 整合包确定正常使用后可以删除.\opt\packages文件夹(1.2Gb)
 ## 更新
 如果出现小版本更新0.1内  
-普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。
+普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。  
+0.1版本的更新会放出更新包。  
 ## 使用方法
 1.提前排好图片顺序与名称  
 2.打开软件（需要10秒）  
