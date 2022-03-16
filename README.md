@@ -27,7 +27,8 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
   
 需要什么字体就导入什么字体比如空心字等  
 使用相同颜色阴影可以加粗字体  
-  
+如果发生闪退等意外resources文件夹下save.jpg将会保存最新修改的图片文件  
+
 想要尝试全自动翻译可以把整张图选中,然后点击自动翻译  
 部分标点符号大小可能会渲染异常,更换排列方式有概率解决  
 根据电脑配置运行速度不同，可能会出现卡顿  
@@ -35,6 +36,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 报错处理:  
 短时间卡顿是正常现象  
 翻译超时请检测与translate.google.cn的网络连接  
+朗读也是网络原因  
   
 环境要求:  
 需要网络,使用Google翻译(中国)  
@@ -47,9 +49,9 @@ cpu会非常慢
 [www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
 ## 效果
 ##### 界面展示(旧版)
-[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/1.png "口语翻译是弱项")
+[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")  
 ##### 口语翻译有待加强
-[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")
+[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")  
 ##### 其他功能
 |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)   |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)   |
 | ------------ | ------------ |
