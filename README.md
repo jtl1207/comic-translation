@@ -37,7 +37,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 ### 报错处理:  
 短时间卡顿是正常现象  
 翻译超时与朗读超时请检测与translate.google.cn的网络连接  
-字体无法渲染请切换字体  
+字体无法渲染请检查字体颜色或者切换字体  
   
 ### 环境要求:  
 需要网络,使用Google翻译(中国)  
@@ -49,7 +49,7 @@ cpu会非常慢
 字体下载地址:  
 [www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
 ## 效果
-##### 界面展示(旧版)
+##### 界面展示(V1.1.0)
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")  
 ##### 口语翻译有待加强
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")  
