@@ -1,6 +1,6 @@
 # AI漫画翻译辅助工具
 这是一个基于深度学习的漫画翻译辅助工具  
-包含翻译，图像去字，自动嵌字功能。
+包含翻译，朗读，AI图像去字，自动排版，自动嵌字，去除文字后的图像修复等功能。
 
 目的是帮助非专业汉化人员完成更简单，快速的翻译任务。也可以用于加快专业翻译流程。  
 ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中文容易出现问题，希望更多的小众漫画能够得到汉化。
@@ -18,7 +18,11 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 整合包确定正常使用后可以删除.\opt\packages文件夹(1.2Gb)
 ## 更新
 如果出现小版本更新0.1内  
-普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。
+普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。  
+  
+整合吧未包含的更新:  
+修复文字box过小导致图像覆盖异常的bug  
+  
 ## 使用方法
 1.提前排好图片顺序与名称  
 2.打开软件（需要10秒）  
@@ -42,6 +46,7 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
   
 环境要求:  
 需要网络,使用Google翻译(中国)  
+提示：ssr可能造成网络异常，请自行尝试  
 有显卡可显著加快图像处理速度(CUDA)  
 cpu会非常慢  
 需要驱动版本>=472.50  
@@ -51,9 +56,9 @@ cpu会非常慢
 [www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
 ## 效果
 ##### 界面展示(旧版)
-[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "口语翻译是弱项")  
+[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "")  
 ##### 口语翻译有待加强
-[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "口语翻译有待加强")  
+[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "")](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/2.png "")  
 ##### 其他功能
 |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/1.jpg)   |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/1.jpg)   |
 | ------------ | ------------ |
@@ -61,8 +66,8 @@ cpu会非常慢
 | [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/14.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/14.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/11.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/11.jpg)   |
 | [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/12.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/12.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/12.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/12.jpg)   |
 | [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/13.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/in/13.jpg)  |[![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/13.jpg)](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/out/13.jpg)   |
-## 目标
-更多字体渲染方式（CG文字渲染）  
+## 之后的目标
+更多字体渲染方式  
 更多字体角度  
 优化使用体验  
 ## 相关项目
