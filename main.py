@@ -712,7 +712,7 @@ class MainWindow(QtWidgets.QMainWindow):
             for i in self.memory.img_textlines:
                 if compute_iou([i.xyxy[0], i.xyxy[1], i.xyxy[2], i.xyxy[3]],
                                [pos[0], pos[1], pos[0] + pos[2], pos[1] + pos[3]]) > 0.6:
-                    textline_box.append([i.xyxy[0], i.xyxy[1], i.xyxy[2] - i.xyxy[0], i.xyxy[3] - i.xyxy[1]])
+                    textline_box.append([i.xyxy[0], i.xyxy[1], i.xyxy[2] - i.xyxy[0] + 3, i.xyxy[3] - i.xyxy[1]])
 
             if len(textline_box) == 0:
                 self.memory.textline_box.append(pos)
