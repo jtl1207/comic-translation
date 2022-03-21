@@ -72,5 +72,5 @@ cpu会非常慢
 [zyddnys](https://github.com/zyddnys/manga-image-translator)与[dmMaze](https://github.com/dmMaze/comic-text-detector)(文本检测模型)  
 [KUR-creative/SickZil-Machine](https://github.com/KUR-creative/SickZil-Machine "KUR-creative/SickZil-Machine")(图像修复模型)
 ## 开源协议
-BSD 3-Clause License  
+GNU General Public License v3.0   
 感谢一切推广
