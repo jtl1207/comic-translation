@@ -20,9 +20,6 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 如果出现小版本更新0.1内  
 普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。  
   
-整合包未包含的更新:  
-修复文字box过小导致图像覆盖异常的bug  
-  
 ## 使用方法
 1.提前排好图片顺序与名称  
 2.打开软件（需要10秒）  
@@ -75,5 +72,5 @@ cpu会非常慢
 [zyddnys](https://github.com/zyddnys/manga-image-translator)与[dmMaze](https://github.com/dmMaze/comic-text-detector)(文本检测模型)  
 [KUR-creative/SickZil-Machine](https://github.com/KUR-creative/SickZil-Machine "KUR-creative/SickZil-Machine")(图像修复模型)
 ## 开源协议
-BSD 3-Clause License  
+GNU General Public License v3.0   
 感谢一切推广
