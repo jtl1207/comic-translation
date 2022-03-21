@@ -170,13 +170,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # 其他线程
     def thredstart(self):
-        thread_cuda = threading.Thread(target=self.thred_cuda())  # cuda
-        thread_cuda.setDaemon(True)
-        thread_cuda.start()
-        thread_net = threading.Thread(target=self.thread_net())  # cuda
-        thread_net.setDaemon(True)
-        thread_net.start()
-        self.config_read()
+        QtCore.QTimer.singleShot(500, self.config_read)
+        QtCore.QTimer.singleShot(1000, self.thred_cuda)
+        QtCore.QTimer.singleShot(1500, self.thread_net)
 
     # 检测cuda状态
     def thred_cuda(self):
