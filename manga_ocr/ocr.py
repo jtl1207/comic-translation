@@ -10,20 +10,14 @@ from transformers import AutoFeatureExtractor, AutoTokenizer, VisionEncoderDecod
 
 
 class MangaOcr:
-    def __init__(self, pretrained_model_name_or_path='.\manga_ocr\model', force_cpu=False):
+    def __init__(self, pretrained_model_name_or_path='.\\manga_ocr\\model', force_cpu=False):
         self.feature_extractor = AutoFeatureExtractor.from_pretrained(pretrained_model_name_or_path)
         self.tokenizer = AutoTokenizer.from_pretrained(pretrained_model_name_or_path)
         self.model = VisionEncoderDecoderModel.from_pretrained(pretrained_model_name_or_path)
 
         if not force_cpu and torch.cuda.is_available():
-            logger.info('torch using CUDA')
             self.model.cuda()
-        else:
-            logger.info('torch using CPU')
 
-        #self(Path(__file__).parent / 'assets/example.jpg')
-
-        print('pytorch 就绪')
 
     def __call__(self, img_or_path):
         if isinstance(img_or_path, str) or isinstance(img_or_path, Path):

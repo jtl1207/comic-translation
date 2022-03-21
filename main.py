@@ -10,18 +10,14 @@ from tkinter import messagebox, Tk, filedialog, colorchooser
 
 import cv2
 import numpy as np
-import paddle
-import paddleocr
 from PIL import Image
 from PyQt6 import QtWidgets, QtCore, QtGui
 
-from covermaker import conf
-from covermaker import render
+from translate import translate, change_translate_mod
+from covermaker import conf, render
 from inpainting import Inpainting
 from interface import Ui_MainWindow
 from characterStyle import Ui_Dialog as CharacterStyleDialog
-from manga_ocr.ocr import MangaOcr
-from mtranslate import translate
 from textblockdetector import dispatch as textblockdetector
 from utils import compute_iou
 
@@ -76,7 +72,6 @@ class memory():
 # 运行状态
 class state():
     mod_ready = False  # 模型状态
-    use_cuda = False  # cuda状态
     action_running = False  # 运行状态
     text_running = False  # 是否是文字输出
     img_half = False  # 当前图片缩小一半
@@ -169,41 +164,94 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_6.clicked.connect(lambda event: self.save())
 
         self.ui.pushButton.clicked.connect(lambda event: self.tts())
+        self.ui.pushButton_3.clicked.connect(lambda event: self.change_translate_mod())
         self.ui.pushButton_5.clicked.connect(lambda event: self.doit())
         self.ui.pushButton_15.clicked.connect(lambda event: self.closeit())
 
     # 其他线程
     def thredstart(self):
-        thread_cuda = threading.Thread(target=self.thred_cuda)  # cuda
+        thread_cuda = threading.Thread(target=self.thred_cuda())  # cuda
         thread_cuda.setDaemon(True)
         thread_cuda.start()
+        thread_net = threading.Thread(target=self.thread_net())  # cuda
+        thread_net.setDaemon(True)
+        thread_net.start()
         self.config_read()
 
     # 检测cuda状态
     def thred_cuda(self):
         try:
-            if paddle.device.is_compiled_with_cuda():
-                if paddle.device.get_device() == 'cpu':
-                    print('War:gpu丢失\n切换至cpu')
-                    self.ui.label_10.setText('异常')
-                elif paddle.device.get_device() == 'gpu:0':
-                    print(f'Debug:gpu正常:数量{paddle.device.cuda.device_count()}')
-                    self.ui.label_10.setText('正常')
-            else:
-                print('Error:当前版本不支持gpu')
-                self.ui.label_10.setText('异常')
+            import paddle
+            if paddle.device.get_device() == 'cpu':
+                print('paddle:cuda异常,cpu模式')
+                self.ui.label_10.setText('cpu')
+            elif paddle.device.get_device() == 'gpu:0':
+                print(f'paddle:cuda正常')
         except:
             print('Error:paddle异常')
             self.ui.label_10.setText('异常')
+        try:
+            import torch
+            if torch.cuda.is_available():
+                print("pytorch:cuda正常")
+            else:
+                print("pytorch:cuda异常,cpu模式")
+                self.ui.label_10.setText('cpu')
+        except:
+            print('Error:pytorch异常')
+            self.ui.label_10.setText('异常')
+        try:
+            import tensorflow as tf
+            if tf.config.list_physical_devices('GPU'):
+                print("tensorflow:cuda正常")
+            else:
+                print("tensorflow:cuda异常,cpu模式")
+                self.ui.label_10.setText('cpu')
+        except:
+            print('Error:tensorflow异常')
+            self.ui.label_10.setText('异常')
+
+        if self.ui.label_10.text() == '检测中':
+            self.ui.label_10.setText('正常')
+
+    # 检测网络状态
+    def thread_net(self):
         t = time.time()
         try:
-            text = translate("hello", "zh-CN", "auto")
-            print(f'Debug:网络正常,ping:{(time.time() - t) * 1000:.0f}ms')
+            with eventlet.Timeout(20, False):
+                text = translate("hello", "zh-CN", "auto", in_mod=3)
             if text != '你好':
-                print('Error:翻译Error,api异常')
+                print('google翻译:网络异常,不推荐使用代理')
+            else:
+                print(f'google翻译:网络正常,ping:{(time.time() - t) * 1000:.0f}ms')
         except:
-            print(f'Error:网络异常,google翻译无法使用')
-        self.state.use_cuda = True
+            print('google翻译:网络异常,不推荐使用代理')
+
+        t = time.time()
+        try:
+            with eventlet.Timeout(20, False):
+                text = translate("hello", "zh-CN", "auto", in_mod=1)
+            if text != '你好':
+                print('deepl翻译:网络异常,不推荐使用代理')
+            else:
+                print(f'deepl翻译:网络正常,ping:{(time.time() - t) * 1000:.0f}ms')
+        except:
+            print('deepl翻译:网络异常,不推荐使用代理')
+
+        from gtts.tts import gTTS
+        import pyglet
+        try:
+            tts = gTTS(text='お兄ちゃん大好き', lang='ja')
+            filename = 'temp.mp3'
+            tts.save(filename)
+            music = pyglet.media.load(filename, streaming=False)
+            music.play()
+            time.sleep(music.duration)
+            os.remove(filename)
+            print(f'TTS:网络正常')
+        except:
+            print('TTS:网络异常,不推荐使用代理')
+
 
     # 切换语言
     def change_mod(self, language):
@@ -225,9 +273,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.state.mod_ready = False
         self.ui.label_4.setText('未加载')
         if language == 'ja':
+            from manga_ocr.ocr import MangaOcr
             self.memory.model = MangaOcr()
             self.ui.actionja.setChecked(True)
         elif language == 'en':
+            import paddleocr
             self.memory.model = paddleocr.PaddleOCR(
                 show_log=False,  # 禁用日志
                 use_gpu=True,  # 使用gpu
@@ -271,6 +321,7 @@ class MainWindow(QtWidgets.QMainWindow):
             )
             self.ui.actionen.setChecked(True)
         elif language == 'ko':
+            import paddleocr
             self.memory.model = paddleocr.PaddleOCR(
                 # show_log=False, #禁用日志
                 use_gpu=True,  # 使用gpu
@@ -491,6 +542,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_5.setEnabled(False)
             self.ui.pushButton_15.setEnabled(False)
             self.ui.pushButton.setEnabled(False)
+            self.ui.pushButton_3.setEnabled(False)
 
     # 输出文字方向
     def change_word_way(self):
@@ -610,7 +662,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.memory.img_show[pos[1]:pos[1] + pos[3], pos[0]:pos[0] + pos[2]] = white
 
         print('Info:图像修复完成')
-        # print(pos)
         # 添加文字
         text = self.ui.textEdit_2.toPlainText()
         if text.replace(" ", "") != '':
@@ -618,7 +669,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
             pos = self.memory.textline_box[0]
             if pos is None: print('Error:boxError')
-            # elif self.state.img_half: pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
             if self.var.word_way == 2 or self.var.word_language == 'en' or self.var.word_language == 'ko':
                 if self.var.word_way == 1:
@@ -640,6 +690,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.state.action_running = False
             self.ui.pushButton_5.setEnabled(False)
             self.ui.pushButton.setEnabled(False)
+            self.ui.pushButton_3.setEnabled(False)
             self.ui.pushButton_15.setEnabled(False)
             self.ui.textEdit.setText('')
             self.ui.textEdit_2.setText('')
@@ -686,6 +737,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_5.setEnabled(False)
         self.ui.pushButton_15.setEnabled(False)
         self.ui.pushButton.setEnabled(False)
+        self.ui.pushButton_3.setEnabled(False)
 
     def closeit(self):
         self.state.action_running = False
@@ -695,6 +747,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_5.setEnabled(False)
         self.ui.pushButton_15.setEnabled(False)
         self.ui.pushButton.setEnabled(False)
+        self.ui.pushButton_3.setEnabled(False)
 
     # 翻译选中内容
     def translation_img(self):
@@ -753,6 +806,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.pushButton_5.setEnabled(True)
             self.ui.pushButton_15.setEnabled(True)
             self.ui.pushButton.setEnabled(True)
+            self.ui.pushButton_3.setEnabled(True)
         else:
             print('War:任务队列未完成,右下角继续')
 
@@ -877,7 +931,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # 朗读
     def tts(self):
-        from gtts import gTTS
+        from gtts.tts import gTTS
         import pyglet
         if self.ui.textEdit.toPlainText().isspace() != True:
             try:
@@ -889,7 +943,13 @@ class MainWindow(QtWidgets.QMainWindow):
                 time.sleep(music.duration)
                 os.remove(filename)
             except:
-                print('无可朗读文字')
+                print('War:网络异常,TTS错误')
+
+    # 切换翻译模式
+    def change_translate_mod(self):
+        change_translate_mod()
+        if self.ui.textEdit.toPlainText().isspace() != True:
+            self.ui.textEdit_2.setText(translate(self.ui.textEdit.toPlainText(), f'{self.var.word_language}', "auto"))
 
     # 参数保存
     def config_save(self, parameter, value):

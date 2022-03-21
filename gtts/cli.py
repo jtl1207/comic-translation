@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gtts import gTTS, gTTSError, __version__
+from gtts.tts import gTTS, gTTSError
 from gtts.lang import tts_langs
 import click
 import logging
@@ -167,7 +167,6 @@ def set_debug(ctx, param, debug):
     expose_value=False,
     callback=set_debug,
     help="Show debug information.")
-@click.version_option(version=__version__)
 def tts_cli(text, file, output, slow, tld, lang, nocheck):
     """ Read <text> to mp3 format using Google Translate's Text-to-Speech API
     (set <text> or --file <file> to - for standard input)
