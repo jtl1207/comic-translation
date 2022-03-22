@@ -22,8 +22,8 @@ def _get_font(font_name, font_size):
 
 
 # 用于提取单词和数字
-_RE_H_WORDS = re.compile(r"\w+|[!?|\"\'-]+", re.ASCII)
-_RE_V_WORDS = re.compile(r"\+", re.ASCII)
+_RE_H_WORDS = re.compile(r"\w+|[!,.?|\"\'-]+", re.ASCII)
+_RE_V_WORDS = re.compile(r"\+|[!,.?|\"\'-]+", re.ASCII)
 
 def _splite_text_to_words(text,section):
     '''将文本切分成单词。非宽字符将是单个的字，英文和数字将是词组
@@ -82,16 +82,20 @@ _PUNCTUATION_BLOCK_SET = {
 class Line(object):
     '''行。每行保存了很多词。'''
 
-    def __init__(self, font, letter_spacing):
+    def __init__(self, font, letter_spacing, section):
         self.words = deque()
         self._font = font
         self._letter_spacing = letter_spacing
         self._words_width = 0
         self._letter_count = 0
+        self._section = section
 
     def _update(self, word, sign):
         self._letter_count += sign * len(word)
-        self._words_width += sign * self._font.getsize(word)[0]
+        if self._section.dir == 'h':
+            self._words_width += sign * self._font.getsize(word)[0]
+        else:
+            self._words_width += sign * self._font.getsize(word)[1]
 
     def append(self, word):
         self.words.append(word)
@@ -213,7 +217,7 @@ class Layout(object):
             self._lines_start_pos[i][1] = int(box.lt[1]) + int(yoff)
 
 
-def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
+def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc, section):
     '''将text按照行分割后，返回每一行的数据
     Returns:
         list: [Line ...] 如果列表为空，表示不能按照指定配置在文本框内完成排版
@@ -221,13 +225,13 @@ def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
     texth = 0
     lines = []
     prei, i = 0, 0
-    line = Line(font, lespc)
+    line = Line(font, lespc, section)
     while i < len(words):
         word = words[i]
         line.append(word)
         lw = line.get_display_width()
-        # print('\tline width', lw, line, i, prei)
-        if lw > boxw - font_size:
+        #print('line width '+ f'{lw} '+ f'{line} '+ f'{i} '+f'{prei} '+f'{boxw}')
+        if lw > boxw:
             # 超框了直接返回
             if i == prei:
                 return []
@@ -241,7 +245,7 @@ def _build_lines(text, font, words, boxw, boxh, font_size, lespc, lispc):
             # 添加新行
             line.pop()
             lines.append(line)
-            line = Line(font, lespc)
+            line = Line(font, lespc, section)
             prei = i
             # 如果行首有违反排版规则的字符则从前面的行借字符
             if word[0] in _PUNCTUATION_BLOCK_SET:
@@ -280,9 +284,9 @@ def _build_max_font_lines(text, section):
         mfs = lfs + int((rfs - lfs) / 2)
         lespc = int(section.letter_spacing_factor * mfs)
         lispc = int(section.line_spacing_factor * mfs)
-        # print('fontsize', mfs, lfs, rfs)
+        #print('fontsize', mfs, lfs, rfs)
         font = _get_font(section.font, mfs)
-        lines = _build_lines(text, font, words, boxw, boxh, mfs, lespc, lispc)
+        lines = _build_lines(text, font, words, boxw, boxh, mfs, lespc, lispc, section)
         if mfs == lfs:
             break
         if lines:
@@ -303,7 +307,7 @@ def _build_trimed_lines(text, section):
     lespc = int(section.letter_spacing_factor * fs)
     lispc = int(section.line_spacing_factor * fs)
     font = _get_font(section.font, fs)
-    line = Line(font, lespc)
+    line = Line(font, lespc, section)
 
     limit = width - font.getsize('…')[0]
     i = 0

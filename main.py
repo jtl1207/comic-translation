@@ -675,9 +675,9 @@ class MainWindow(QtWidgets.QMainWindow):
             try:
                 img = render.Render(img)
                 img = img.draw(text, self.var.word_conf)
+                self.memory.img_show = img.copy()
             except:
                 print('Error:嵌字错误')
-            self.memory.img_show = img.copy()
         else:
             print('War:未输入文字')
         self.show_img()
@@ -722,9 +722,9 @@ class MainWindow(QtWidgets.QMainWindow):
             try:
                 img = render.Render(img)
                 img = img.draw(text, self.var.word_conf)
+                self.memory.img_show = img.copy()
             except:
                 print('Error:嵌字错误')
-            self.memory.img_show = img
             # 显示图像
             self.show_img()
         else:
