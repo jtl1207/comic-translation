@@ -1,7 +1,7 @@
 from .google import translate as gtranslate
 from .deepL import DeepLTranslator as dtranslate
 
-__all__ = ['translate','change_translate_mod']
+__all__ = ['translate', 'change_translate_mod']
 mod = 1
 
 
@@ -31,7 +31,8 @@ def translate(text='', to_language="zh-CN", from_language="auto", in_mod=0):
         if mod == 1:
             return dtranslate(translate_str=text, target_lang=to_language, translate_mode='word').translate()['result']
         elif mod == 2:
-            return dtranslate(translate_str=text, target_lang=to_language, translate_mode='sentences').translate()['result']
+            return dtranslate(translate_str=text, target_lang=to_language, translate_mode='sentences').translate()[
+                'result']
 
 
 def change_translate_mod():
@@ -39,7 +40,11 @@ def change_translate_mod():
     切换模式
     '''
     global mod
-    mod = (mod+1) % 3
-    if mod==1:print('Info:使用deepl翻译模式1')
-    elif mod==2:print('Info:使用deepl翻译模式2')
-    elif mod==3:print('Info:使用Google翻译')
+    mod = mod + 1
+    if mod == 4: mod -= 3
+    if mod == 1:
+        print('Info:使用deepl翻译模式1')
+    elif mod == 2:
+        print('Info:使用deepl翻译模式2')
+    elif mod == 3:
+        print('Info:使用Google翻译')

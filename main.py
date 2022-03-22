@@ -672,10 +672,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.var.word_conf.dir = 'h'
             else:
                 self.var.word_conf.dir = 'v'
-
-            img = render.Render(img)
-            img = img.draw(text, self.var.word_conf)
-
+            try:
+                img = render.Render(img)
+                img = img.draw(text, self.var.word_conf)
+            except:
+                print('Error:嵌字错误')
             self.memory.img_show = img.copy()
         else:
             print('War:未输入文字')
@@ -710,8 +711,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
             pos = self.memory.textline_box[0]
             if pos is None: print('Error:boxError')
-            # elif self.state.img_half:
-            #     pos = [i * 2 for i in pos]
             self.var.word_conf.box = conf.Box(pos[0], pos[1], pos[2], pos[3])
 
             if self.var.word_way == 2 or self.var.word_language == 'en' or self.var.word_language == 'ko':
@@ -720,8 +719,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.var.word_conf.dir = 'h'
             else:
                 self.var.word_conf.dir = 'v'
-            img = render.Render(img)
-            img = img.draw(text, self.var.word_conf)
+            try:
+                img = render.Render(img)
+                img = img.draw(text, self.var.word_conf)
+            except:
+                print('Error:嵌字错误')
             self.memory.img_show = img
             # 显示图像
             self.show_img()
