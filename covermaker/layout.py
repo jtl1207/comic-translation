@@ -22,8 +22,8 @@ def _get_font(font_name, font_size):
 
 
 # 用于提取单词和数字
-_RE_V_WORDS = re.compile(r"\w+|[!?|\"\'-]+", re.ASCII)
-_RE_H_WORDS = re.compile(r"\+", re.ASCII)
+_RE_H_WORDS = re.compile(r"\w+|[!?|\"\'-]+", re.ASCII)
+_RE_V_WORDS = re.compile(r"\+", re.ASCII)
 
 def _splite_text_to_words(text,section):
     '''将文本切分成单词。非宽字符将是单个的字，英文和数字将是词组
