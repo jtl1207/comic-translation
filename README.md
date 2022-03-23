@@ -16,10 +16,10 @@ ps：机翻有待加强，目前对横向文本支持较好，垂直文本非中
 为了更好的显示错误原因，整合包保留了控制台。  
 
 ```diff
-! 第一次打开会安装虚拟环境，需要7分钟，安装结束有报错没有关系(4个) numpy,unidic-lite,python-sdk,Levenshtein这4个报错没有关系。  
+! 第一次打开会安装虚拟环境，需要7分钟，安装结束有报错没有关系(2个)   
 ! 整合包第一次部署时会安装python库和环境，这个安装是一次性的，关闭以后再次打开也无法安装，需要还原opt文件夹   
 ```  
-整合包确定正常使用后可以删除.\opt\packages文件夹(1.2Gb)
+整合包确定正常使用后可以删除.\opt\packages文件夹
 ## 更新
 如果出现小版本更新0.1内  
 普通用户可以[下载](https://github.com/jtl1207/comic-translation/archive/refs/heads/main.zip )最新代码，放到整合包的resources文件夹内。  
