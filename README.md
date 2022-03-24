@@ -1,4 +1,5 @@
 # AI漫画翻译辅助工具
+![visitors](https://visitor-badge.glitch.me/badge?page_id=jtl120.comic-translation)  
 这是一个基于深度学习的漫画翻译辅助工具  
 包含翻译，朗读，AI图像去字，自动排版，自动嵌字，去除文字后的图像修复等功能。
 
