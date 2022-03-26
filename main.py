@@ -516,7 +516,8 @@ class MainWindow(QtWidgets.QMainWindow):
         if not os.path.exists(self.memory.task_out):
             os.mkdir(self.memory.task_out)
         name = self.memory.task_out + "/" + self.memory.task_name[self.state.task_end]
-        cv2.imwrite(name, self.memory.img_show)
+        # cv2.imwrite(name, self.memory.img_show)
+        cv2.imencode('.jpg', self.memory.img_show)[1].tofile(name)
         self.state.task_end += 1
         self.ui.img.update()
 
@@ -952,15 +953,15 @@ class MainWindow(QtWidgets.QMainWindow):
     # 参数保存
     def config_save(self, parameter, value):
         config = configparser.ConfigParser()
-        config.read('config.ini')
+        config.read('config.ini', encoding='UTF-8')
         config.set('var', f'{parameter}', f'{value}')
-        with open('./config.ini', 'w+') as config_file:
+        with open('./config.ini', 'w+', encoding='UTF-8') as config_file:
             config.write(config_file)
 
     # 参数读取
     def config_read(self):
         config = configparser.ConfigParser()
-        config.read('config.ini')
+        config.read('config.ini', encoding='UTF-8')
         self.var.img_language = config.get('var', 'img_language')
         self.change_mod(self.var.img_language)
 

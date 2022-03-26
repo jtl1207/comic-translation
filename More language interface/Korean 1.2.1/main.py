@@ -516,7 +516,8 @@ class MainWindow(QtWidgets.QMainWindow):
         if not os.path.exists(self.memory.task_out):
             os.mkdir(self.memory.task_out)
         name = self.memory.task_out + "/" + self.memory.task_name[self.state.task_end]
-        cv2.imwrite(name, self.memory.img_show)
+        # cv2.imwrite(name, self.memory.img_show)
+        cv2.imencode('.jpg', self.memory.img_show)[1].tofile(name)
         self.state.task_end += 1
         self.ui.img.update()
 
