@@ -61,7 +61,7 @@ cpu会非常慢
 整合包自带CUDA与cudnn不需要额外安装  
 
 字体下载地址:  
-[www.hellofont.cn](http://www.hellofont.cn "www.hellofont.cn")
+
 ## 效果
 ##### 界面展示(旧版)
 [![](https://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "")](http://github.com/jtl1207/comic-translation/blob/main/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/3.jpg "")  
